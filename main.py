@@ -25,6 +25,24 @@ def get_asset_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
+def on_closing():
+    global firebase_listener
+    print("Shutting down cleanly...")
+    
+    try:
+        # If the listener exists, close the streaming connection
+        if 'firebase_listener' in globals() and firebase_listener is not None:
+            firebase_listener.close()
+    except Exception as e:
+        print(f"Error closing Firebase listener: {e}")
+        
+    # Destroy the Tkinter window completely
+    app.destroy()
+    
+    # Forcefully exit the Python process to catch any remaining rogue threads
+    os._exit(0)
+
+
 def open_database_creds():
     global ref
     
@@ -33,19 +51,20 @@ def open_database_creds():
         filetypes=[("JSON Files", "*.json")]
     )
 
-    cred = credentials.Certificate(file_path)
-
-    url_input_box = ctk.CTkInputDialog(
+    database_url = ctk.CTkInputDialog(
         text="Enter Database URL:",
         title="Database URL Required"
-    )
+    ).get_input()
 
-    database_url = url_input_box.get_input()
+    try:
+        cred = credentials.Certificate(file_path)
+        firebase_admin.initialize_app(cred, {
+            "databaseURL": database_url
+        })
+        ref = db.reference("pokemon")
 
-    firebase_admin.initialize_app(cred, {
-        "databaseURL": database_url
-    })
-    ref = db.reference("pokemon")
+    except Exception as e:
+        messagebox.showerror(title="Error", message=f"Database error: {e}")
 
 
 def show_tracker_menu(event):
@@ -186,7 +205,7 @@ def arrange_pokedex_boxes(event=None):
 
 
 def open_pokedex_file():
-    global pokedex
+    global pokedex, firebase_listener
 
     if ref is None:
         messagebox.showerror(
@@ -223,7 +242,11 @@ def open_pokedex_file():
             arrange_pokedex_boxes()
             printPokedex()
 
-            ref.listen(on_firebase_update)
+            if firebase_listener is not None:
+                firebase_listener.close()
+                firebase_listener = None
+
+            firebase_listener = ref.listen(on_firebase_update)
 
         except Exception as e:
             messagebox.showerror(
@@ -349,6 +372,7 @@ load_pokedex_menu.add_command(label="Cancel")
 
 tracker_frame.bind("<Button-3>", show_tracker_menu)
 tracker_container.bind("<Button-3>", show_tracker_menu)
+app.protocol("WM_DELETE_WINDOW", on_closing)
 
 
 app.mainloop()
