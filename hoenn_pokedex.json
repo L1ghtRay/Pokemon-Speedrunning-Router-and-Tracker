@@ -1,0 +1,4538 @@
+{
+    "Treecko": {
+        "num": 1,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "101"
+            ],
+            "sapphire": [
+                "101"
+            ],
+            "emerald": [
+                "101"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Grovyle": {
+        "num": 2,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Treecko"
+            ],
+            "sapphire": [
+                "Evolve Treecko"
+            ],
+            "emerald": [
+                "Evolve Treecko"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Sceptile": {
+        "num": 3,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Treecko/Grovyle"
+            ],
+            "sapphire": [
+                "Evolve Treecko/Grovyle"
+            ],
+            "emerald": [
+                "Evolve Treecko/Grovyle"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Torchic": {
+        "num": 4,
+        "type": [
+            "Fire"
+        ],
+        "locations": {
+            "ruby": [
+                "101"
+            ],
+            "sapphire": [
+                "101"
+            ],
+            "emerald": [
+                "101"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Combusken": {
+        "num": 5,
+        "type": [
+            "Fire",
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Torchic"
+            ],
+            "sapphire": [
+                "Evolve Torchic"
+            ],
+            "emerald": [
+                "Evolve Torchic"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Blaziken": {
+        "num": 6,
+        "type": [
+            "Fire",
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Torchic/Combusken"
+            ],
+            "sapphire": [
+                "Evolve Torchic/Combusken"
+            ],
+            "emerald": [
+                "Evolve Torchic/Combusken"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Mudkip": {
+        "num": 7,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "101"
+            ],
+            "sapphire": [
+                "101"
+            ],
+            "emerald": [
+                "101"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Marshtomp": {
+        "num": 8,
+        "type": [
+            "Water",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Mudkip"
+            ],
+            "sapphire": [
+                "Evolve Mudkip"
+            ],
+            "emerald": [
+                "Evolve Mudkip"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Swampert": {
+        "num": 9,
+        "type": [
+            "Water",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Mudkip/Marshtomp"
+            ],
+            "sapphire": [
+                "Evolve Mudkip/Marshtomp"
+            ],
+            "emerald": [
+                "Evolve Mudkip/Marshtomp"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Poochyena": {
+        "num": 10,
+        "type": [
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "101",
+                "102",
+                "103"
+            ],
+            "sapphire": [
+                "101",
+                "102",
+                "103"
+            ],
+            "emerald": [
+                "101",
+                "102",
+                "103",
+                "104",
+                "110",
+                "116",
+                "117",
+                "120",
+                "121",
+                "123",
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Mightyena": {
+        "num": 11,
+        "type": [
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Poochyena"
+            ],
+            "sapphire": [
+                "Evolve Poochyena"
+            ],
+            "emerald": [
+                "120",
+                "121",
+                "123"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Zigzagoon": {
+        "num": 12,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "101",
+                "102",
+                "103",
+                "104",
+                "110",
+                "116",
+                "117",
+                "118",
+                "119",
+                "120",
+                "121",
+                "123",
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "101",
+                "102",
+                "103",
+                "104",
+                "110",
+                "116",
+                "117",
+                "118",
+                "119",
+                "120",
+                "121",
+                "123",
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "101",
+                "102",
+                "103",
+                "118",
+                "119"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Linoone": {
+        "num": 13,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "118",
+                "119",
+                "120",
+                "121",
+                "123"
+            ],
+            "sapphire": [
+                "118",
+                "119",
+                "120",
+                "121",
+                "123"
+            ],
+            "emerald": [
+                "118",
+                "119"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wurmple": {
+        "num": 14,
+        "type": [
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "101",
+                "102",
+                "104",
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "101",
+                "102",
+                "104",
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "101",
+                "102",
+                "104",
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Silcoon": {
+        "num": 15,
+        "type": [
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Beautifly": {
+        "num": 16,
+        "type": [
+            "Bug",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Wurmple/Silcoon/Cascoon"
+            ],
+            "sapphire": [
+                "Evolve Wurmple/Silcoon/Cascoon"
+            ],
+            "emerald": [
+                "Evolve Wurmple/Silcoon/Cascoon"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Cascoon": {
+        "num": 17,
+        "type": [
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Dustox": {
+        "num": 18,
+        "type": [
+            "Bug",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Wurmple/Silcoon/Cascoon"
+            ],
+            "sapphire": [
+                "Evolve Wurmple/Silcoon/Cascoon"
+            ],
+            "emerald": [
+                "Evolve Wurmple/Silcoon/Cascoon"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Lotad": {
+        "num": 19,
+        "type": [
+            "Water",
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "102",
+                "114"
+            ],
+            "emerald": [
+                "102",
+                "114"
+            ]
+        },
+        "color": "#29DCE5"
+    },
+    "Lombre": {
+        "num": 20,
+        "type": [
+            "Water",
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "114"
+            ],
+            "emerald": [
+                "114"
+            ]
+        },
+        "color": "#29DCE5"
+    },
+    "Ludicolo": {
+        "num": 21,
+        "type": [
+            "Water",
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "Evolve Lotad/Lombre"
+            ],
+            "emerald": [
+                "Evolve Lotad/Lombre"
+            ]
+        },
+        "color": "#29DCE5"
+    },
+    "Seedot": {
+        "num": 22,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "102",
+                "114"
+            ],
+            "sapphire": [],
+            "emerald": [
+                "102",
+                "117",
+                "120",
+                "Rustboro City"
+            ]
+        },
+        "color": "#E5DC29"
+    },
+    "Nuzleaf": {
+        "num": 23,
+        "type": [
+            "Grass",
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "114"
+            ],
+            "sapphire": [],
+            "emerald": [
+                "114"
+            ]
+        },
+        "color": "#E5DC29"
+    },
+    "Shiftry": {
+        "num": 24,
+        "type": [
+            "Grass",
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Seedot/Nuzleaf"
+            ],
+            "sapphire": [],
+            "emerald": [
+                "Evolve Seedot/Nuzleaf"
+            ]
+        },
+        "color": "#E5DC29"
+    },
+    "Taillow": {
+        "num": 25,
+        "type": [
+            "Normal",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "104",
+                "115",
+                "116",
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "104",
+                "115",
+                "116",
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "104",
+                "115",
+                "116",
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Swellow": {
+        "num": 26,
+        "type": [
+            "Normal",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "115"
+            ],
+            "sapphire": [
+                "115"
+            ],
+            "emerald": [
+                "115"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wingull": {
+        "num": 27,
+        "type": [
+            "Water",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Mt. Pyre",
+                "Pacifidlog Town",
+                "Slateport City",
+                "Lilycove City"
+            ],
+            "sapphire": [
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Mt. Pyre",
+                "Pacifidlog Town",
+                "Slateport City",
+                "Lilycove City"
+            ],
+            "emerald": [
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Mt. Pyre",
+                "Pacifidlog Town",
+                "Slateport City",
+                "Lilycove City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Pelipper": {
+        "num": 28,
+        "type": [
+            "Water",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Slateport City",
+                "Lilycove City"
+            ],
+            "sapphire": [
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Slateport City",
+                "Lilycove City"
+            ],
+            "emerald": [
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Slateport City",
+                "Lilycove City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Ralts": {
+        "num": 29,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "102"
+            ],
+            "sapphire": [
+                "102"
+            ],
+            "emerald": [
+                "102"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Kirlia": {
+        "num": 30,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Ralts"
+            ],
+            "sapphire": [
+                "Evolve Ralts"
+            ],
+            "emerald": [
+                "Evolve Ralts"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Gardevoir": {
+        "num": 31,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Ralts/Kirlia"
+            ],
+            "sapphire": [
+                "Evolve Ralts/Kirlia"
+            ],
+            "emerald": [
+                "Evolve Ralts/Kirlia"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Surskit": {
+        "num": 32,
+        "type": [
+            "Bug",
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "120"
+            ],
+            "sapphire": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "120"
+            ],
+            "emerald": []
+        },
+        "color": "#DB1DCB"
+    },
+    "Masquerain": {
+        "num": 33,
+        "type": [
+            "Bug",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Surskit"
+            ],
+            "sapphire": [
+                "Evolve Surskit"
+            ],
+            "emerald": []
+        },
+        "color": "#DB1DCB"
+    },
+    "Shroomish": {
+        "num": 34,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Breloom": {
+        "num": 35,
+        "type": [
+            "Grass",
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Shroomish"
+            ],
+            "sapphire": [
+                "Evolve Shroomish"
+            ],
+            "emerald": [
+                "Evolve Shroomish"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Slakoth": {
+        "num": 36,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Petalburg Woods"
+            ],
+            "sapphire": [
+                "Petalburg Woods"
+            ],
+            "emerald": [
+                "Petalburg Woods"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Vigoroth": {
+        "num": 37,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Slakoth"
+            ],
+            "sapphire": [
+                "Evolve Slakoth"
+            ],
+            "emerald": [
+                "Evolve Slakoth"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Slaking": {
+        "num": 38,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Slakoth/Vigoroth"
+            ],
+            "sapphire": [
+                "Evolve Slakoth/Vigoroth"
+            ],
+            "emerald": [
+                "Evolve Slakoth/Vigoroth"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Abra": {
+        "num": 39,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Granite Cave"
+            ],
+            "sapphire": [
+                "Granite Cave"
+            ],
+            "emerald": [
+                "116",
+                "Granite Cave"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Kadabra": {
+        "num": 40,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Abra"
+            ],
+            "sapphire": [
+                "Evolve Abra"
+            ],
+            "emerald": [
+                "Evolve Abra"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Alakazam": {
+        "num": 41,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Abra/Kadabra"
+            ],
+            "sapphire": [
+                "Evolve Abra/Kadabra"
+            ],
+            "emerald": [
+                "Evolve Abra/Kadabra"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Nincada": {
+        "num": 42,
+        "type": [
+            "Bug",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "116"
+            ],
+            "sapphire": [
+                "116"
+            ],
+            "emerald": [
+                "116"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Ninjask": {
+        "num": 43,
+        "type": [
+            "Bug",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Nincada"
+            ],
+            "sapphire": [
+                "Evolve Nincada"
+            ],
+            "emerald": [
+                "Evolve Nincada"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Shedinja": {
+        "num": 44,
+        "type": [
+            "Bug",
+            "Ghost"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Nincada"
+            ],
+            "sapphire": [
+                "Evolve Nincada"
+            ],
+            "emerald": [
+                "Evolve Nincada"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Whismur": {
+        "num": 45,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "116",
+                "Rusturf Tunnel",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "116",
+                "Rusturf Tunnel",
+                "Victory Road"
+            ],
+            "emerald": [
+                "116",
+                "Desert Underpass",
+                "Rusturf Tunnel",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Loudred": {
+        "num": 46,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Victory Road"
+            ],
+            "emerald": [
+                "Desert Underpass",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Exploud": {
+        "num": 47,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Whismur/Loudred"
+            ],
+            "sapphire": [
+                "Evolve Whismur/Loudred"
+            ],
+            "emerald": [
+                "Evolve Whismur/Loudred"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Makuhita": {
+        "num": 48,
+        "type": [
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Granite Cave",
+                "Rustboro City",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Granite Cave",
+                "Rustboro City",
+                "Victory Road"
+            ],
+            "emerald": [
+                "Granite Cave",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Hariyama": {
+        "num": 49,
+        "type": [
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Victory Road"
+            ],
+            "emerald": [
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Goldeen": {
+        "num": 50,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "118",
+                "119",
+                "120",
+                "Meteor Falls",
+                "Petalburg City",
+                "Safari Zone",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "118",
+                "119",
+                "120",
+                "Meteor Falls",
+                "Petalburg City",
+                "Safari Zone",
+                "Victory Road"
+            ],
+            "emerald": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "118",
+                "119",
+                "120",
+                "Meteor Falls",
+                "Petalburg City",
+                "Safari Zone",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Seaking": {
+        "num": 51,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Magikarp": {
+        "num": 52,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "102",
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "111",
+                "114",
+                "115",
+                "117",
+                "118",
+                "119",
+                "120",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Abandoned Ship",
+                "Dewford Town",
+                "Ever Grande City",
+                "Meteor Falls",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Petalburg City",
+                "Safari Zone",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Sootopolis City",
+                "Lilycove City",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "102",
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "111",
+                "114",
+                "115",
+                "117",
+                "118",
+                "119",
+                "120",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Abandoned Ship",
+                "Dewford Town",
+                "Ever Grande City",
+                "Meteor Falls",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Petalburg City",
+                "Safari Zone",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Sootopolis City",
+                "Lilycove City",
+                "Victory Road"
+            ],
+            "emerald": [
+                "102",
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "111",
+                "114",
+                "115",
+                "117",
+                "118",
+                "119",
+                "120",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Abandoned Ship",
+                "Dewford Town",
+                "Ever Grande City",
+                "Meteor Falls",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Petalburg City",
+                "Safari Zone",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Sootopolis City",
+                "Lilycove City",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Gyarados": {
+        "num": 53,
+        "type": [
+            "Water",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Sootopolis City"
+            ],
+            "sapphire": [
+                "Sootopolis City"
+            ],
+            "emerald": [
+                "Sootopolis City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Azurill": {
+        "num": 54,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Marill/Azumarill"
+            ],
+            "sapphire": [
+                "Evolve Marill/Azumarill"
+            ],
+            "emerald": [
+                "Evolve Marill/Azumarill"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Marill": {
+        "num": 55,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "120",
+                "Petalburg City"
+            ],
+            "sapphire": [
+                "102",
+                "111",
+                "114",
+                "117",
+                "120",
+                "Petalburg City"
+            ],
+            "emerald": [
+                "102",
+                "104",
+                "111",
+                "112",
+                "114",
+                "117",
+                "120",
+                "Petalburg City",
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Azumarill": {
+        "num": 56,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Marill/Azurill"
+            ],
+            "sapphire": [
+                "Evolve Marill/Azurill"
+            ],
+            "emerald": [
+                "Evolve Marill/Azurill"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Geodude": {
+        "num": 57,
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "111",
+                "114",
+                "Granite Cave",
+                "Safari Zone",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "111",
+                "114",
+                "Granite Cave",
+                "Safari Zone",
+                "Victory Road"
+            ],
+            "emerald": [
+                "111",
+                "114",
+                "Granite Cave",
+                "Safari Zone",
+                "Victory Road",
+                "Team Magma/Aqua Hideout"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Graveler": {
+        "num": 58,
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Victory Road"
+            ],
+            "emerald": [
+                "Victory Road",
+                "Team Magma/Aqua Hideout"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Golem": {
+        "num": 59,
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Geodude/Graveler"
+            ],
+            "sapphire": [
+                "Evolve Geodude/Graveler"
+            ],
+            "emerald": [
+                "Evolve Geodude/Graveler"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Nosepass": {
+        "num": 60,
+        "type": [
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Granite Cave"
+            ],
+            "sapphire": [
+                "Granite Cave"
+            ],
+            "emerald": [
+                "Granite Cave"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Skitty": {
+        "num": 61,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "116",
+                "Fortree City"
+            ],
+            "sapphire": [
+                "116",
+                "Fortree City"
+            ],
+            "emerald": [
+                "116"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Delcatty": {
+        "num": 62,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Skitty"
+            ],
+            "sapphire": [
+                "Evolve Skitty"
+            ],
+            "emerald": [
+                "Evolve Skitty"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Zubat": {
+        "num": 63,
+        "type": [
+            "Poison",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Cave of Origin",
+                "Granite Cave",
+                "Meteor Falls",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Cave of Origin",
+                "Granite Cave",
+                "Meteor Falls",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Victory Road"
+            ],
+            "emerald": [
+                "Altering Cave",
+                "Cave of Origin",
+                "Granite Cave",
+                "Meteor Falls",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Golbat": {
+        "num": 64,
+        "type": [
+            "Poison",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Cave of Origin",
+                "Meteor Falls",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Sky Pillar",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Cave of Origin",
+                "Meteor Falls",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Sky Pillar",
+                "Victory Road"
+            ],
+            "emerald": [
+                "Cave of Origin",
+                "Meteor Falls",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Sky Pillar",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Crobat": {
+        "num": 65,
+        "type": [
+            "Poison",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Zubat/Golbat"
+            ],
+            "sapphire": [
+                "Evolve Zubat/Golbat"
+            ],
+            "emerald": [
+                "Evolve Zubat/Golbat"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Tentacool": {
+        "num": 66,
+        "type": [
+            "Water",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "103",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Abandoned Ship",
+                "Dewford Town",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Sootopolis City",
+                "Lilycove City"
+            ],
+            "sapphire": [
+                "103",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Abandoned Ship",
+                "Dewford Town",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Sootopolis City",
+                "Lilycove City"
+            ],
+            "emerald": [
+                "103",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Abandoned Ship",
+                "Dewford Town",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Sootopolis City",
+                "Lilycove City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Tentacruel": {
+        "num": 67,
+        "type": [
+            "Water",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Abandoned Ship"
+            ],
+            "sapphire": [
+                "Abandoned Ship"
+            ],
+            "emerald": [
+                "Abandoned Ship"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Sableye": {
+        "num": 68,
+        "type": [
+            "Dark",
+            "Ghost"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "Cave of Origin",
+                "Granite Cave",
+                "Sky Pillar",
+                "Victory Road"
+            ],
+            "emerald": [
+                "Cave of Origin",
+                "Granite Cave",
+                "Sky Pillar",
+                "Victory Road"
+            ]
+        },
+        "color": "#29DCE5"
+    },
+    "Mawile": {
+        "num": 69,
+        "type": [
+            "Steel"
+        ],
+        "locations": {
+            "ruby": [
+                "Cave of Origin",
+                "Granite Cave",
+                "Sky Pillar",
+                "Victory Road"
+            ],
+            "sapphire": [],
+            "emerald": [
+                "Victory Road"
+            ]
+        },
+        "color": "#E5DC29"
+    },
+    "Aron": {
+        "num": 70,
+        "type": [
+            "Steel",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Granite Cave",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Granite Cave",
+                "Victory Road"
+            ],
+            "emerald": [
+                "Granite Cave",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Lairon": {
+        "num": 71,
+        "type": [
+            "Steel",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Victory Road"
+            ],
+            "emerald": [
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Aggron": {
+        "num": 72,
+        "type": [
+            "Steel",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Aron/Lairon"
+            ],
+            "sapphire": [
+                "Evolve Aron/Lairon"
+            ],
+            "emerald": [
+                "Evolve Aron/Lairon"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Machop": {
+        "num": 73,
+        "type": [
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "112",
+                "Fiery Path",
+                "Jagged Pass"
+            ],
+            "sapphire": [
+                "112",
+                "Fiery Path",
+                "Jagged Pass"
+            ],
+            "emerald": [
+                "Fiery Path",
+                "Jagged Pass"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Machoke": {
+        "num": 74,
+        "type": [
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Machop"
+            ],
+            "sapphire": [
+                "Evolve Machop"
+            ],
+            "emerald": [
+                "Evolve Machop"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Machamp": {
+        "num": 75,
+        "type": [
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Machop/Machoke"
+            ],
+            "sapphire": [
+                "Evolve Machop/Machoke"
+            ],
+            "emerald": [
+                "Evolve Machop/Machoke"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Meditite": {
+        "num": 76,
+        "type": [
+            "Fighting",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Mt. Pyre",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Mt. Pyre",
+                "Victory Road"
+            ],
+            "emerald": []
+        },
+        "color": "#DB1DCB"
+    },
+    "Medicham": {
+        "num": 77,
+        "type": [
+            "Fighting",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Victory Road"
+            ],
+            "emerald": []
+        },
+        "color": "#DB1DCB"
+    },
+    "Electrike": {
+        "num": 78,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "110",
+                "118"
+            ],
+            "sapphire": [
+                "110",
+                "118"
+            ],
+            "emerald": [
+                "110",
+                "118"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Manectric": {
+        "num": 79,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "118"
+            ],
+            "sapphire": [
+                "118"
+            ],
+            "emerald": [
+                "118"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Plusle": {
+        "num": 80,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "110",
+                "Fortree City"
+            ],
+            "sapphire": [
+                "110",
+                "Fortree City"
+            ],
+            "emerald": [
+                "110"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Minun": {
+        "num": 81,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "110"
+            ],
+            "sapphire": [
+                "110"
+            ],
+            "emerald": [
+                "110"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Magnemite": {
+        "num": 82,
+        "type": [
+            "Electric",
+            "Steel"
+        ],
+        "locations": {
+            "ruby": [
+                "New Mauville"
+            ],
+            "sapphire": [
+                "New Mauville"
+            ],
+            "emerald": [
+                "New Mauville"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Magneton": {
+        "num": 83,
+        "type": [
+            "Electric",
+            "Steel"
+        ],
+        "locations": {
+            "ruby": [
+                "New Mauville"
+            ],
+            "sapphire": [
+                "New Mauville"
+            ],
+            "emerald": [
+                "New Mauville"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Voltorb": {
+        "num": 84,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "New Mauville"
+            ],
+            "sapphire": [
+                "New Mauville"
+            ],
+            "emerald": [
+                "New Mauville"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Electrode": {
+        "num": 85,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "New Mauville",
+                "Team Magma/Aqua Hideout"
+            ],
+            "sapphire": [
+                "New Mauville",
+                "Team Magma/Aqua Hideout"
+            ],
+            "emerald": [
+                "New Mauville",
+                "Team Magma/Aqua Hideout"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Volbeat": {
+        "num": 86,
+        "type": [
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "117"
+            ],
+            "sapphire": [
+                "117"
+            ],
+            "emerald": [
+                "117"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Illumise": {
+        "num": 87,
+        "type": [
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "117"
+            ],
+            "sapphire": [
+                "117"
+            ],
+            "emerald": [
+                "117"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Oddish": {
+        "num": 88,
+        "type": [
+            "Grass",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "110",
+                "117",
+                "119",
+                "120",
+                "121",
+                "123",
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "110",
+                "117",
+                "119",
+                "120",
+                "121",
+                "123",
+                "Safari Zone"
+            ],
+            "emerald": [
+                "110",
+                "117",
+                "119",
+                "120",
+                "121",
+                "123",
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Gloom": {
+        "num": 89,
+        "type": [
+            "Grass",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "121",
+                "123",
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "121",
+                "123",
+                "Safari Zone"
+            ],
+            "emerald": [
+                "121",
+                "123",
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Vileplume": {
+        "num": 90,
+        "type": [
+            "Grass",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Oddish/Gloom"
+            ],
+            "sapphire": [
+                "Evolve Oddish/Gloom"
+            ],
+            "emerald": [
+                "Evolve Oddish/Gloom"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Bellossom": {
+        "num": 91,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Oddish/Gloom"
+            ],
+            "sapphire": [
+                "Evolve Oddish/Gloom"
+            ],
+            "emerald": [
+                "Evolve Oddish/Gloom"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Doduo": {
+        "num": 92,
+        "type": [
+            "Normal",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Dodrio": {
+        "num": 93,
+        "type": [
+            "Normal",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Roselia": {
+        "num": 94,
+        "type": [
+            "Grass",
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "117"
+            ],
+            "sapphire": [
+                "117"
+            ],
+            "emerald": []
+        },
+        "color": "#DB1DCB"
+    },
+    "Gulpin": {
+        "num": 95,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "110"
+            ],
+            "sapphire": [
+                "110"
+            ],
+            "emerald": [
+                "110"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Swalot": {
+        "num": 96,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Gulpin"
+            ],
+            "sapphire": [
+                "Evolve Gulpin"
+            ],
+            "emerald": [
+                "Evolve Gulpin"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Carvanha": {
+        "num": 97,
+        "type": [
+            "Water",
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "118",
+                "119"
+            ],
+            "sapphire": [
+                "118",
+                "119"
+            ],
+            "emerald": [
+                "118",
+                "119"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Sharpedo": {
+        "num": 98,
+        "type": [
+            "Water",
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "103",
+                "118",
+                "122",
+                "124",
+                "125",
+                "126",
+                "127",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Mossdeep City",
+                "Pacifidlog Town"
+            ],
+            "sapphire": [
+                "103",
+                "118",
+                "122",
+                "124",
+                "125",
+                "126",
+                "127",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Mossdeep City",
+                "Pacifidlog Town"
+            ],
+            "emerald": [
+                "103",
+                "118",
+                "122",
+                "124",
+                "125",
+                "126",
+                "127",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Mossdeep City",
+                "Pacifidlog Town"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wailmer": {
+        "num": 99,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "103",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Dewford Town",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Lilycove City"
+            ],
+            "sapphire": [
+                "103",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Dewford Town",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Lilycove City"
+            ],
+            "emerald": [
+                "103",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "115",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "130",
+                "131",
+                "132",
+                "133",
+                "134",
+                "Dewford Town",
+                "Ever Grande City",
+                "Mossdeep City",
+                "Pacifidlog Town",
+                "Seafloor Cavern",
+                "Shoal Cave",
+                "Slateport City",
+                "Lilycove City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wailord": {
+        "num": 100,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "129"
+            ],
+            "sapphire": [
+                "129"
+            ],
+            "emerald": [
+                "129"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Numel": {
+        "num": 101,
+        "type": [
+            "Fire",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "112",
+                "Fiery Path",
+                "Jagged Pass"
+            ],
+            "sapphire": [
+                "112",
+                "Fiery Path",
+                "Jagged Pass"
+            ],
+            "emerald": [
+                "112",
+                "Fiery Path",
+                "Jagged Pass"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Camerupt": {
+        "num": 102,
+        "type": [
+            "Fire",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Numel"
+            ],
+            "sapphire": [
+                "Evolve Numel"
+            ],
+            "emerald": [
+                "Evolve Numel"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Slugma": {
+        "num": 103,
+        "type": [
+            "Fire"
+        ],
+        "locations": {
+            "ruby": [
+                "Fiery Path"
+            ],
+            "sapphire": [
+                "Fiery Path"
+            ],
+            "emerald": [
+                "113",
+                "Fiery Path"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Magcargo": {
+        "num": 104,
+        "type": [
+            "Fire",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Slugma"
+            ],
+            "sapphire": [
+                "Evolve Slugma"
+            ],
+            "emerald": [
+                "Evolve Slugma"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Torkoal": {
+        "num": 105,
+        "type": [
+            "Fire"
+        ],
+        "locations": {
+            "ruby": [
+                "Fiery Path"
+            ],
+            "sapphire": [
+                "Fiery Path"
+            ],
+            "emerald": [
+                "Fiery Path",
+                "Team Magma/Aqua Hideout"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Grimer": {
+        "num": 106,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Fiery Path"
+            ],
+            "sapphire": [
+                "Fiery Path"
+            ],
+            "emerald": [
+                "Fiery Path"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Muk": {
+        "num": 107,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Grimer"
+            ],
+            "sapphire": [
+                "Evolve Grimer"
+            ],
+            "emerald": [
+                "Evolve Grimer"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Koffing": {
+        "num": 108,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Fiery Path"
+            ],
+            "sapphire": [
+                "Fiery Path"
+            ],
+            "emerald": [
+                "Fiery Path"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Weezing": {
+        "num": 109,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Koffing"
+            ],
+            "sapphire": [
+                "Evolve Koffing"
+            ],
+            "emerald": [
+                "Evolve Koffing"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Spoink": {
+        "num": 110,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Jagged Pass"
+            ],
+            "sapphire": [
+                "Jagged Pass"
+            ],
+            "emerald": [
+                "Jagged Pass"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Grumpig": {
+        "num": 111,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Spoink"
+            ],
+            "sapphire": [
+                "Evolve Spoink"
+            ],
+            "emerald": [
+                "Evolve Spoink"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Sandshrew": {
+        "num": 112,
+        "type": [
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "111",
+                "113"
+            ],
+            "sapphire": [
+                "111",
+                "113"
+            ],
+            "emerald": [
+                "111",
+                "Mirage Tower"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Sandslash": {
+        "num": 113,
+        "type": [
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Sandshrew"
+            ],
+            "sapphire": [
+                "Evolve Sandshrew"
+            ],
+            "emerald": [
+                "Evolve Sandshrew"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Spinda": {
+        "num": 114,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "113"
+            ],
+            "sapphire": [
+                "113"
+            ],
+            "emerald": [
+                "113"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Skarmory": {
+        "num": 115,
+        "type": [
+            "Steel",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "113"
+            ],
+            "sapphire": [
+                "113"
+            ],
+            "emerald": [
+                "113"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Trapinch": {
+        "num": 116,
+        "type": [
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "111"
+            ],
+            "sapphire": [
+                "111"
+            ],
+            "emerald": [
+                "111",
+                "Mirage Tower"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Vibrava": {
+        "num": 117,
+        "type": [
+            "Ground",
+            "Dragon"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Trapinch"
+            ],
+            "sapphire": [
+                "Evolve Trapinch"
+            ],
+            "emerald": [
+                "Evolve Trapinch"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Flygon": {
+        "num": 118,
+        "type": [
+            "Ground",
+            "Dragon"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Trapinch/Vibrava"
+            ],
+            "sapphire": [
+                "Evolve Trapinch/Vibrava"
+            ],
+            "emerald": [
+                "Evolve Trapinch/Vibrava"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Cacnea": {
+        "num": 119,
+        "type": [
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "111"
+            ],
+            "sapphire": [
+                "111"
+            ],
+            "emerald": [
+                "111"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Cacturne": {
+        "num": 120,
+        "type": [
+            "Grass",
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Cacnea"
+            ],
+            "sapphire": [
+                "Evolve Cacnea"
+            ],
+            "emerald": [
+                "Evolve Cacnea"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Swablu": {
+        "num": 121,
+        "type": [
+            "Normal",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "114",
+                "115"
+            ],
+            "sapphire": [
+                "114",
+                "115"
+            ],
+            "emerald": [
+                "114",
+                "115"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Altaria": {
+        "num": 122,
+        "type": [
+            "Dragon",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Sky Pillar"
+            ],
+            "sapphire": [
+                "Sky Pillar"
+            ],
+            "emerald": [
+                "Sky Pillar"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Zangoose": {
+        "num": 123,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "114"
+            ],
+            "sapphire": [],
+            "emerald": []
+        },
+        "color": "#E1432E"
+    },
+    "Seviper": {
+        "num": 124,
+        "type": [
+            "Poison"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "114"
+            ],
+            "emerald": [
+                "114"
+            ]
+        },
+        "color": "#29DCE5"
+    },
+    "Lunatone": {
+        "num": 125,
+        "type": [
+            "Rock",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "Meteor Falls"
+            ],
+            "emerald": []
+        },
+        "color": "#2E81E1"
+    },
+    "Solrock": {
+        "num": 126,
+        "type": [
+            "Rock",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Meteor Falls"
+            ],
+            "sapphire": [],
+            "emerald": [
+                "Meteor Falls"
+            ]
+        },
+        "color": "#E5DC29"
+    },
+    "Barboach": {
+        "num": 127,
+        "type": [
+            "Water",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "111",
+                "114",
+                "120",
+                "Meteor Falls",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "111",
+                "114",
+                "120",
+                "Meteor Falls",
+                "Victory Road"
+            ],
+            "emerald": [
+                "111",
+                "114",
+                "120",
+                "Meteor Falls",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Whiscash": {
+        "num": 128,
+        "type": [
+            "Water",
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Meteor Falls",
+                "Victory Road"
+            ],
+            "sapphire": [
+                "Meteor Falls",
+                "Victory Road"
+            ],
+            "emerald": [
+                "Meteor Falls",
+                "Victory Road"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Corphish": {
+        "num": 129,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "102",
+                "117",
+                "Petalburg City"
+            ],
+            "sapphire": [
+                "102",
+                "117",
+                "Petalburg City"
+            ],
+            "emerald": [
+                "102",
+                "117",
+                "Petalburg City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Crawdaunt": {
+        "num": 130,
+        "type": [
+            "Water",
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Corphish"
+            ],
+            "sapphire": [
+                "Evolve Corphish"
+            ],
+            "emerald": [
+                "Evolve Corphish"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Baltoy": {
+        "num": 131,
+        "type": [
+            "Ground",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "111"
+            ],
+            "sapphire": [
+                "111"
+            ],
+            "emerald": [
+                "111"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Claydol": {
+        "num": 132,
+        "type": [
+            "Ground",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Sky Pillar"
+            ],
+            "sapphire": [
+                "Sky Pillar"
+            ],
+            "emerald": [
+                "Sky Pillar"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Lileep": {
+        "num": 133,
+        "type": [
+            "Rock",
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "Rustboro City"
+            ],
+            "sapphire": [
+                "Rustboro City"
+            ],
+            "emerald": [
+                "Rustboro City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Cradily": {
+        "num": 134,
+        "type": [
+            "Rock",
+            "Grass"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Lileep"
+            ],
+            "sapphire": [
+                "Evolve Lileep"
+            ],
+            "emerald": [
+                "Evolve Lileep"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Anorith": {
+        "num": 135,
+        "type": [
+            "Rock",
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "Rustboro City"
+            ],
+            "sapphire": [
+                "Rustboro City"
+            ],
+            "emerald": [
+                "Rustboro City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Armaldo": {
+        "num": 136,
+        "type": [
+            "Rock",
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Anorith"
+            ],
+            "sapphire": [
+                "Evolve Anorith"
+            ],
+            "emerald": [
+                "Evolve Anorith"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Igglybuff": {
+        "num": 137,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Jigglypuff/Wigglytuff"
+            ],
+            "sapphire": [
+                "Evolve Jigglypuff/Wigglytuff"
+            ],
+            "emerald": [
+                "Evolve Jigglypuff/Wigglytuff"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Jigglypuff": {
+        "num": 138,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "115"
+            ],
+            "sapphire": [
+                "115"
+            ],
+            "emerald": [
+                "115"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wigglytuff": {
+        "num": 139,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Jigglypuff/Igglybuff"
+            ],
+            "sapphire": [
+                "Evolve Jigglypuff/Igglybuff"
+            ],
+            "emerald": [
+                "Evolve Jigglypuff/Igglybuff"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Feebas": {
+        "num": 140,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "119"
+            ],
+            "sapphire": [
+                "119"
+            ],
+            "emerald": [
+                "119"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Milotic": {
+        "num": 141,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Feebas"
+            ],
+            "sapphire": [
+                "Evolve Feebas"
+            ],
+            "emerald": [
+                "Evolve Feebas"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Castform": {
+        "num": 142,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "119"
+            ],
+            "sapphire": [
+                "119"
+            ],
+            "emerald": [
+                "119"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Staryu": {
+        "num": 143,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Lilycove City"
+            ],
+            "sapphire": [
+                "Lilycove City"
+            ],
+            "emerald": [
+                "Lilycove City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Starmie": {
+        "num": 144,
+        "type": [
+            "Water",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Staryu"
+            ],
+            "sapphire": [
+                "Evolve Staryu"
+            ],
+            "emerald": [
+                "Evolve Staryu"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Kecleon": {
+        "num": 145,
+        "type": [
+            "Normal"
+        ],
+        "locations": {
+            "ruby": [
+                "118",
+                "119",
+                "120",
+                "121",
+                "123"
+            ],
+            "sapphire": [
+                "118",
+                "119",
+                "120",
+                "121",
+                "123"
+            ],
+            "emerald": [
+                "118",
+                "119",
+                "120",
+                "121",
+                "123"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Shuppet": {
+        "num": 146,
+        "type": [
+            "Ghost"
+        ],
+        "locations": {
+            "ruby": [
+                "Mt. Pyre"
+            ],
+            "sapphire": [
+                "121",
+                "123",
+                "Mt. Pyre"
+            ],
+            "emerald": [
+                "121",
+                "123",
+                "Mt. Pyre"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Banette": {
+        "num": 147,
+        "type": [
+            "Ghost"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Shuppet"
+            ],
+            "sapphire": [
+                "Sky Pillar"
+            ],
+            "emerald": [
+                "Sky Pillar"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Duskull": {
+        "num": 148,
+        "type": [
+            "Ghost"
+        ],
+        "locations": {
+            "ruby": [
+                "121",
+                "123",
+                "Mt. Pyre"
+            ],
+            "sapphire": [
+                "Mt. Pyre"
+            ],
+            "emerald": [
+                "Mt. Pyre"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Dusclops": {
+        "num": 149,
+        "type": [
+            "Ghost"
+        ],
+        "locations": {
+            "ruby": [
+                "Sky Pillar"
+            ],
+            "sapphire": [
+                "Evolve Duskull"
+            ],
+            "emerald": [
+                "Evolve Duskull"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Tropius": {
+        "num": 150,
+        "type": [
+            "Grass",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "119"
+            ],
+            "sapphire": [
+                "119"
+            ],
+            "emerald": [
+                "119"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Chimecho": {
+        "num": 151,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Mt. Pyre"
+            ],
+            "sapphire": [
+                "Mt. Pyre"
+            ],
+            "emerald": [
+                "Mt. Pyre"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Absol": {
+        "num": 152,
+        "type": [
+            "Dark"
+        ],
+        "locations": {
+            "ruby": [
+                "120"
+            ],
+            "sapphire": [
+                "120"
+            ],
+            "emerald": [
+                "120"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Vulpix": {
+        "num": 153,
+        "type": [
+            "Fire"
+        ],
+        "locations": {
+            "ruby": [
+                "Mt. Pyre"
+            ],
+            "sapphire": [
+                "Mt. Pyre"
+            ],
+            "emerald": [
+                "Mt. Pyre"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Ninetales": {
+        "num": 154,
+        "type": [
+            "Fire"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Vulpix"
+            ],
+            "sapphire": [
+                "Evolve Vulpix"
+            ],
+            "emerald": [
+                "Evolve Vulpix"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Pichu": {
+        "num": 155,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Pikachu/Raichu"
+            ],
+            "sapphire": [
+                "Evolve Pikachu/Raichu"
+            ],
+            "emerald": [
+                "Evolve Pikachu/Raichu"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Pikachu": {
+        "num": 156,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Raichu": {
+        "num": 157,
+        "type": [
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Pikachu/Pichu"
+            ],
+            "sapphire": [
+                "Evolve Pikachu/Pichu"
+            ],
+            "emerald": [
+                "Evolve Pikachu/Pichu"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Psyduck": {
+        "num": 158,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Golduck": {
+        "num": 159,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wynaut": {
+        "num": 160,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Mirage Island"
+            ],
+            "sapphire": [
+                "Mirage Island"
+            ],
+            "emerald": [
+                "Mirage Island"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Wobbuffet": {
+        "num": 161,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Natu": {
+        "num": 162,
+        "type": [
+            "Psychic",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Xatu": {
+        "num": 163,
+        "type": [
+            "Psychic",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Girafarig": {
+        "num": 164,
+        "type": [
+            "Normal",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Phanpy": {
+        "num": 165,
+        "type": [
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Donphan": {
+        "num": 166,
+        "type": [
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Phanpy"
+            ],
+            "sapphire": [
+                "Evolve Phanpy"
+            ],
+            "emerald": [
+                "Evolve Phanpy"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Pinsir": {
+        "num": 167,
+        "type": [
+            "Bug"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Heracross": {
+        "num": 168,
+        "type": [
+            "Bug",
+            "Fighting"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Rhyhorn": {
+        "num": 169,
+        "type": [
+            "Ground",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Safari Zone"
+            ],
+            "sapphire": [
+                "Safari Zone"
+            ],
+            "emerald": [
+                "Safari Zone"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Rhydon": {
+        "num": 170,
+        "type": [
+            "Ground",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Rhyhorn"
+            ],
+            "sapphire": [
+                "Evolve Rhyhorn"
+            ],
+            "emerald": [
+                "Evolve Rhyhorn"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Snorunt": {
+        "num": 171,
+        "type": [
+            "Ice"
+        ],
+        "locations": {
+            "ruby": [
+                "Shoal Cave"
+            ],
+            "sapphire": [
+                "Shoal Cave"
+            ],
+            "emerald": [
+                "Shoal Cave"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Glalie": {
+        "num": 172,
+        "type": [
+            "Ice"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Snorunt"
+            ],
+            "sapphire": [
+                "Evolve Snorunt"
+            ],
+            "emerald": [
+                "Evolve Snorunt"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Spheal": {
+        "num": 173,
+        "type": [
+            "Ice",
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Shoal Cave"
+            ],
+            "sapphire": [
+                "Shoal Cave"
+            ],
+            "emerald": [
+                "Shoal Cave"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Sealeo": {
+        "num": 174,
+        "type": [
+            "Ice",
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Spheal"
+            ],
+            "sapphire": [
+                "Evolve Spheal"
+            ],
+            "emerald": [
+                "Evolve Spheal"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Walrein": {
+        "num": 175,
+        "type": [
+            "Ice",
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Spheal/Sealeo"
+            ],
+            "sapphire": [
+                "Evolve Spheal/Sealeo"
+            ],
+            "emerald": [
+                "Evolve Spheal/Sealeo"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Clamperl": {
+        "num": 176,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "124",
+                "126"
+            ],
+            "sapphire": [
+                "124",
+                "126"
+            ],
+            "emerald": [
+                "124",
+                "126"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Huntail": {
+        "num": 177,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Clamperl"
+            ],
+            "sapphire": [
+                "Evolve Clamperl"
+            ],
+            "emerald": [
+                "Evolve Clamperl"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Gorebyss": {
+        "num": 178,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Clamperl"
+            ],
+            "sapphire": [
+                "Evolve Clamperl"
+            ],
+            "emerald": [
+                "Evolve Clamperl"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Relicanth": {
+        "num": 179,
+        "type": [
+            "Water",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "124",
+                "126"
+            ],
+            "sapphire": [
+                "124",
+                "126"
+            ],
+            "emerald": [
+                "124",
+                "126"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Corsola": {
+        "num": 180,
+        "type": [
+            "Water",
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "128",
+                "Ever Grande City",
+                "Pacifidlog Town"
+            ],
+            "sapphire": [
+                "128",
+                "Ever Grande City",
+                "Pacifidlog Town"
+            ],
+            "emerald": [
+                "128",
+                "Ever Grande City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Chinchou": {
+        "num": 181,
+        "type": [
+            "Water",
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "124",
+                "126"
+            ],
+            "sapphire": [
+                "124",
+                "126"
+            ],
+            "emerald": [
+                "124",
+                "126"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Lanturn": {
+        "num": 182,
+        "type": [
+            "Water",
+            "Electric"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Chinchou"
+            ],
+            "sapphire": [
+                "Evolve Chinchou"
+            ],
+            "emerald": [
+                "Evolve Chinchou"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Luvdisc": {
+        "num": 183,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "128",
+                "Ever Grande City"
+            ],
+            "sapphire": [
+                "128",
+                "Ever Grande City"
+            ],
+            "emerald": [
+                "128",
+                "Ever Grande City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Horsea": {
+        "num": 184,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "132",
+                "133",
+                "134"
+            ],
+            "sapphire": [
+                "132",
+                "133",
+                "134"
+            ],
+            "emerald": [
+                "132",
+                "133",
+                "134",
+                "Pacifidlog Town"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Seadra": {
+        "num": 185,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Horsea"
+            ],
+            "sapphire": [
+                "Evolve Horsea"
+            ],
+            "emerald": [
+                "Evolve Horsea"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Kingdra": {
+        "num": 186,
+        "type": [
+            "Water",
+            "Dragon"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Horsea/Seadra"
+            ],
+            "sapphire": [
+                "Evolve Horsea/Seadra"
+            ],
+            "emerald": [
+                "Evolve Horsea/Seadra"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Bagon": {
+        "num": 187,
+        "type": [
+            "Dragon"
+        ],
+        "locations": {
+            "ruby": [
+                "Meteor Falls"
+            ],
+            "sapphire": [
+                "Meteor Falls"
+            ],
+            "emerald": [
+                "Meteor Falls"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Shelgon": {
+        "num": 188,
+        "type": [
+            "Dragon"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Bagon"
+            ],
+            "sapphire": [
+                "Evolve Bagon"
+            ],
+            "emerald": [
+                "Evolve Bagon"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Salamence": {
+        "num": 189,
+        "type": [
+            "Dragon",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Bagon/Shelgon"
+            ],
+            "sapphire": [
+                "Evolve Bagon/Shelgon"
+            ],
+            "emerald": [
+                "Evolve Bagon/Shelgon"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Beldum": {
+        "num": 190,
+        "type": [
+            "Steel",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Mossdeep City"
+            ],
+            "sapphire": [
+                "Mossdeep City"
+            ],
+            "emerald": [
+                "Mossdeep City"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Metang": {
+        "num": 191,
+        "type": [
+            "Steel",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Beldum"
+            ],
+            "sapphire": [
+                "Evolve Beldum"
+            ],
+            "emerald": [
+                "Evolve Beldum"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Metagross": {
+        "num": 192,
+        "type": [
+            "Steel",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Evolve Beldum/Metang"
+            ],
+            "sapphire": [
+                "Evolve Beldum/Metang"
+            ],
+            "emerald": [
+                "Evolve Beldum/Metang"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Regirock": {
+        "num": 193,
+        "type": [
+            "Rock"
+        ],
+        "locations": {
+            "ruby": [
+                "111"
+            ],
+            "sapphire": [
+                "111"
+            ],
+            "emerald": [
+                "111"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Regice": {
+        "num": 194,
+        "type": [
+            "Ice"
+        ],
+        "locations": {
+            "ruby": [
+                "105"
+            ],
+            "sapphire": [
+                "105"
+            ],
+            "emerald": [
+                "105"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Registeel": {
+        "num": 195,
+        "type": [
+            "Steel"
+        ],
+        "locations": {
+            "ruby": [
+                "120"
+            ],
+            "sapphire": [
+                "120"
+            ],
+            "emerald": [
+                "120"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Latias": {
+        "num": 196,
+        "type": [
+            "Dragon",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Southern Island"
+            ],
+            "sapphire": [
+                "Roaming Hoenn"
+            ],
+            "emerald": [
+                "Southern Island",
+                "Roaming Hoenn"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Latios": {
+        "num": 197,
+        "type": [
+            "Dragon",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [
+                "Roaming Hoenn"
+            ],
+            "sapphire": [
+                "Southern Island"
+            ],
+            "emerald": [
+                "Southern Island",
+                "Roaming Hoenn"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Kyogre": {
+        "num": 198,
+        "type": [
+            "Water"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [
+                "Cave of Origin"
+            ],
+            "emerald": [
+                "Marine Cave"
+            ]
+        },
+        "color": "#29DCE5"
+    },
+    "Groudon": {
+        "num": 199,
+        "type": [
+            "Ground"
+        ],
+        "locations": {
+            "ruby": [
+                "Cave of Origin"
+            ],
+            "sapphire": [],
+            "emerald": [
+                "Terra Cave"
+            ]
+        },
+        "color": "#E5DC29"
+    },
+    "Rayquaza": {
+        "num": 200,
+        "type": [
+            "Dragon",
+            "Flying"
+        ],
+        "locations": {
+            "ruby": [
+                "Sky Pillar"
+            ],
+            "sapphire": [
+                "Sky Pillar"
+            ],
+            "emerald": [
+                "Sky Pillar"
+            ]
+        },
+        "color": "#9C9C9C"
+    },
+    "Jirachi": {
+        "num": 201,
+        "type": [
+            "Steel",
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [],
+            "emerald": []
+        },
+        "color": "#3A3A3A"
+    },
+    "Deoxys": {
+        "num": 202,
+        "type": [
+            "Psychic"
+        ],
+        "locations": {
+            "ruby": [],
+            "sapphire": [],
+            "emerald": [
+                "Birth Island"
+            ]
+        },
+        "color": "#2EE140"
+    }
+}
