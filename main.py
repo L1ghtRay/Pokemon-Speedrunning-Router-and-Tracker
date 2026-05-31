@@ -226,7 +226,7 @@ def create_pokedex_boxes():
         image_path = None
 
         try:
-            image_path = get_asset_path(os.path.join("sprites", "pokemon", f"{str(pokemon_name).lower()}.png"))
+            image_path = get_asset_path(os.path.join("assets", "pokemon", f"{str(pokemon_name).lower()}.png"))
             raw_img = Image.open(image_path).convert("RGBA")
 
             # Generate bright vs darkened options natively
