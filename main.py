@@ -1,10 +1,8 @@
-import json
+import json, os, sys, re
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageEnhance
-import os
-import sys
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -12,7 +10,7 @@ import threading
 
 SQUARE_SIZE = 30
 
-squares_cache = []
+squares_cache = {}
 pokedex = {}
 ref = None
 firebase_listener = None
@@ -59,20 +57,30 @@ def open_database_creds():
         title="Database URL Required"
     ).get_input()
 
+    if firebase_admin._apps:
+        print("Found an existing Firebase app connection. Resetting...")
+
+        old_app = firebase_admin.get_app()
+
+        firebase_admin.delete_app(old_app)
+        print("Previous connection terminated successfully.")
+
     try:
         cred = credentials.Certificate(file_path)
         firebase_admin.initialize_app(cred, {
             "databaseURL": database_url
         })
-        ref = db.reference("pokemon")
         local_only = False
 
     except Exception as e:
-        messagebox.showerror(title="Error", message=f"Database error: {e}")
+        messagebox.showerror(
+            title="Error", 
+            message=f"Database error: {e}"
+        )
 
 
 def open_pokedex_file():
-    global pokedex, firebase_listener, local_only
+    global pokedex, ref, firebase_listener, local_only, pokedex_file_path, pokedex_file_name
 
     if not cred:
         messagebox.showwarning(
@@ -81,31 +89,30 @@ def open_pokedex_file():
         )
         local_only = True
     
-    if not local_only and ref is None:
+    if not local_only and cred is None:
         messagebox.showerror(
             title="Database Error",
             message="Please reload the database credentials file!"
         )
         return
 
-    file_path = filedialog.askopenfilename(
+    pokedex_file_path = filedialog.askopenfilename(
         title="Select Pokedex JSON Data",
         filetypes=[("JSON Files", "*.json")]
     )
 
-    if file_path:
+    if pokedex_file_path:
         try:
-            with open(file_path, 'r') as f:
+            with open(pokedex_file_path, 'r') as f:
                 pokedex = json.load(f)
                 for pokemon_name in pokedex.keys():
-                        pokedex[pokemon_name]['is_caught'] = False
+                    pokedex[pokemon_name]['is_caught'] = pokedex[pokemon_name].get('is_caught', False)
 
-            # messagebox.showinfo(
-            #     title="Success",
-            #     message="Success!"
-            # )
+            pokedex_file_name = os.path.basename(pokedex_file_path).rstrip(".json")
 
             if not local_only:
+                ref = db.reference(pokedex_file_name)
+
                 db_data = ref.get()
 
                 if not db_data:
@@ -127,24 +134,17 @@ def open_pokedex_file():
         except Exception as e:
             messagebox.showerror(
                 title="Error",
-                message=f"Error: {str(e)}"  # Show the real error!
+                message=f"Error: {str(e)}"
             )
 
 
 def clear_squares_data():
     global squares_cache
     
-    for square in squares_cache:
+    for square in squares_cache.values():
         square.destroy()
 
-    squares_cache = []
-
-    # messagebox.showinfo(
-    #     title="Success",
-    #     message="Cleared Squares!"
-    # )
-
-    # printPokedex()
+    squares_cache = {}
 
 
 def clear_pokedex_data():
@@ -152,30 +152,55 @@ def clear_pokedex_data():
     pokedex = {}
     cred = None
     ref = None
-    threading.Thread(target=firebase_listener.close(), daemon=True).start()
-    firebase_listener = None
+    if firebase_listener:
+        threading.Thread(target=firebase_listener.close(), daemon=True).start()
+        firebase_listener = None
 
     clear_squares_data()
 
     tracker_container.pack_forget()
 
-    # messagebox.showinfo(
-    #     title="Success",
-    #     message="Cleared Pokedex!"
-    # )
-
     printPokedex()
 
 
-def create_pokedex_boxes():
-    if not pokedex: return
+def save_pokedex_data():
+    global pokedex
 
-    # import sys
-    # base = getattr(sys, '_MEIPASS', os.path.abspath('.'))
-    # test_path = os.path.join(base, "sprites", "pokemon", "treecko.png")
-    # print(f"MEIPASS base: {base}")
-    # print(f"Test path exists: {os.path.exists(test_path)}")
-    # print(f"Sprites folder exists: {os.path.exists(os.path.join(base, 'sprites'))}")
+    if not pokedex:
+        messagebox.showwarning(
+            title="Warning", message="Pokedex is empty! Nothing to save."
+        )
+        return
+
+    file_path = filedialog.asksaveasfilename(
+        title="Save Pokedex Data",
+        initialfile=pokedex_file_name,
+        defaultextension=".json",
+        filetypes=[("JSON Files", "*.json")],
+    )
+
+    if file_path:
+        try:
+            with open(file_path, "w") as f:
+                json.dump(pokedex, f, indent=4)
+
+            messagebox.showinfo(
+                title="Success", 
+                message="Pokedex data saved successfully!"
+            )
+
+        except Exception as e:
+            print(f"Error saving data: {e}")
+            messagebox.showerror(
+                title="Error", 
+                message="Could not save the file!"
+            )
+
+
+def create_pokedex_boxes():
+    global squares_cache
+
+    if not pokedex: return
 
     clear_squares_data()
     tracker_container.pack(fill="both", expand=True, padx=5, pady=5)
@@ -185,7 +210,6 @@ def create_pokedex_boxes():
     for i, (pokemon_name, pokemon_info) in enumerate(sorted_pokedex, start=1):
         square = ctk.CTkFrame(
             tracker_container,
-            fg_color=pokemon_info['color'],
             corner_radius=0,
             width=SQUARE_SIZE,
             height=SQUARE_SIZE
@@ -197,6 +221,7 @@ def create_pokedex_boxes():
         
         square.is_caught = pokemon_info.get('is_caught', False)
         square.pokemon_id = str(pokemon_name)
+        square.configure(fg_color = pokemon_info['color'] if not square.is_caught else "#494949")
 
         image_path = None
 
@@ -238,7 +263,7 @@ def create_pokedex_boxes():
             label.bind("<Button-1>", toggle_caught)
             label.bind("<Button-3>", show_tracker_menu) 
         
-        squares_cache.append(square)
+        squares_cache[pokemon_name] = square
 
     sync_squares_to_ui()
 
@@ -253,7 +278,7 @@ def arrange_pokedex_boxes(event=None):
     COLS = max(1, tracker_container._parent_frame.winfo_width() // (get_actual_size() + 2))
 
     current_col, current_row = 0, 0
-    for square in squares_cache:
+    for square in squares_cache.values():
         square.grid(row=current_row, column=current_col, padx=1, pady=1, sticky="nsew")
         current_col += 1
         if current_col >= COLS:
@@ -291,22 +316,29 @@ def toggle_caught(event):
                 print(f"Failed to transmit data to Firebase: {e}")
 
 
-def sync_squares_to_ui():
-    for square in squares_cache:
-        pokemon_id = getattr(square, 'pokemon_id', None)
-        if not pokemon_id or pokemon_id not in pokedex:
-            continue
+def sync_squares_to_ui(target_id=None):
+    squares_to_update = [target_id] if target_id else squares_cache.keys()
 
-        # Cast to bool — Firebase can return 0/1 instead of False/True
-        is_caught = bool(pokedex[pokemon_id].get('is_caught', False))
+    try:
+        for pokemon_name in squares_to_update:
+            
+            if pokemon_name not in squares_cache or pokemon_name not in pokedex:
+                raise KeyError("p_id not in square cache or not in pokedex")
+            
+            square = squares_cache[pokemon_name]
+            is_caught = bool(pokedex[pokemon_name].get('is_caught', False)) # Cast to bool — Firebase can return 0/1 instead of False/True
 
-        print(pokemon_id, is_caught, square.is_caught)
+            if getattr(square, 'is_caught', None) == is_caught:
+                continue            
 
-        if is_caught:
-            square.configure(fg_color="#494949")
-        else:
-            square.configure(fg_color=pokedex[pokemon_id]['color'])
-        square.is_caught = is_caught
+            print(pokemon_name, is_caught, square.is_caught)
+
+            new_color = "#494949" if is_caught else pokedex[pokemon_name].get('color', '#666666')
+            square.configure(fg_color=new_color)
+            square.is_caught = is_caught
+
+    except Exception as e:
+        print(f"Error: {e}")
 
 
 def on_firebase_update(event):
@@ -316,26 +348,28 @@ def on_firebase_update(event):
 
     path_parts = [p for p in event.path.strip('/').split('/') if p]
 
+    target_id = None
+
     if len(path_parts) == 0:
         # Initial full snapshot: event.data = {full pokedex}
         if isinstance(event.data, dict):
-            for pokemon_id, pokemon_data in event.data.items():
-                if pokemon_id in pokedex and isinstance(pokemon_data, dict):
-                    pokedex[pokemon_id].update(pokemon_data)
+            for pokemon_name, pokemon_data in event.data.items():
+                if pokemon_name in pokedex and isinstance(pokemon_data, dict):
+                    pokedex[pokemon_name].update(pokemon_data)
 
     elif len(path_parts) == 1:
         # Whole pokemon updated: event.path = '/Pikachu'
-        pokemon_id = path_parts[0]
-        if pokemon_id in pokedex and isinstance(event.data, dict):
-            pokedex[pokemon_id].update(event.data)
+        pokemon_name = path_parts[0]
+        if pokemon_name in pokedex and isinstance(event.data, dict):
+            pokedex[pokemon_name].update(event.data)
 
     elif len(path_parts) == 2:
         # Single field updated: event.path = '/Pikachu/is_caught'
-        pokemon_id, field = path_parts
-        if pokemon_id in pokedex:
-            pokedex[pokemon_id][field] = event.data
+        pokemon_name, field = path_parts
+        if pokemon_name in pokedex:
+            pokedex[pokemon_name][field] = event.data
 
-    app.after(0, sync_squares_to_ui)
+    app.after(0, lambda: sync_squares_to_ui(target_id))
 
 
 
@@ -371,7 +405,9 @@ load_pokedex_menu = tk.Menu(
     relief="solid"               
 )
 load_pokedex_menu.add_command(label="Open Database Credentials File", command=open_database_creds)
+load_pokedex_menu.add_separator()
 load_pokedex_menu.add_command(label="Open Pokedex JSON File", command=open_pokedex_file)
+load_pokedex_menu.add_command(label="Save Pokedex Data", command=save_pokedex_data)
 load_pokedex_menu.add_command(label="Clear Pokedex Data", command=clear_pokedex_data)
 load_pokedex_menu.add_separator()
 load_pokedex_menu.add_command(label="Cancel")
