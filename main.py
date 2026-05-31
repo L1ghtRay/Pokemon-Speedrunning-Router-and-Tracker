@@ -8,6 +8,7 @@ import sys
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+import threading
 
 SQUARE_SIZE = 30
 
@@ -15,6 +16,8 @@ squares_cache = []
 pokedex = {}
 ref = None
 firebase_listener = None
+local_only = False
+cred = None
 
 
 def get_asset_path(relative_path):
@@ -32,8 +35,19 @@ def on_closing():
     os._exit(0)
 
 
+def show_tracker_menu(event):
+    load_pokedex_menu.post(event.x_root, event.y_root)
+
+
+def printPokedex():
+    if not pokedex:
+        print(pokedex)
+    for pokemon in pokedex.items():
+        print(pokemon)
+
+
 def open_database_creds():
-    global ref
+    global ref, local_only, cred
     
     file_path = filedialog.askopenfilename(
         title="Select Database Credentials JSON File",
@@ -51,20 +65,70 @@ def open_database_creds():
             "databaseURL": database_url
         })
         ref = db.reference("pokemon")
+        local_only = False
 
     except Exception as e:
         messagebox.showerror(title="Error", message=f"Database error: {e}")
 
 
-def show_tracker_menu(event):
-    load_pokedex_menu.post(event.x_root, event.y_root)
+def open_pokedex_file():
+    global pokedex, firebase_listener, local_only
 
+    if not cred:
+        messagebox.showwarning(
+            title="Local-Only Mode",
+            message="Since no database credentials file was loaded, program will use local-only mode!"
+        )
+        local_only = True
+    
+    if not local_only and ref is None:
+        messagebox.showerror(
+            title="Database Error",
+            message="Please reload the database credentials file!"
+        )
+        return
 
-def printPokedex():
-    if not pokedex:
-        print(pokedex)
-    for pokemon in pokedex.items():
-        print(pokemon)
+    file_path = filedialog.askopenfilename(
+        title="Select Pokedex JSON Data",
+        filetypes=[("JSON Files", "*.json")]
+    )
+
+    if file_path:
+        try:
+            with open(file_path, 'r') as f:
+                pokedex = json.load(f)
+                for pokemon_name in pokedex.keys():
+                        pokedex[pokemon_name]['is_caught'] = False
+
+            # messagebox.showinfo(
+            #     title="Success",
+            #     message="Success!"
+            # )
+
+            if not local_only:
+                db_data = ref.get()
+
+                if not db_data:
+                    ref.update(pokedex)
+                else:
+                    pokedex = db_data
+
+            create_pokedex_boxes()
+            arrange_pokedex_boxes()
+            printPokedex()
+
+            if not local_only:
+                if firebase_listener is not None:
+                    firebase_listener.close()
+                    firebase_listener = None
+
+                firebase_listener = ref.listen(on_firebase_update)
+
+        except Exception as e:
+            messagebox.showerror(
+                title="Error",
+                message=f"Error: {str(e)}"  # Show the real error!
+            )
 
 
 def clear_squares_data():
@@ -84,8 +148,12 @@ def clear_squares_data():
 
 
 def clear_pokedex_data():
-    global pokedex
+    global pokedex, ref, firebase_listener, cred
     pokedex = {}
+    cred = None
+    ref = None
+    threading.Thread(target=firebase_listener.close(), daemon=True).start()
+    firebase_listener = None
 
     clear_squares_data()
 
@@ -193,57 +261,6 @@ def arrange_pokedex_boxes(event=None):
             current_row += 1
 
 
-def open_pokedex_file():
-    global pokedex, firebase_listener
-
-    if ref is None:
-        messagebox.showerror(
-            title="No Database",
-            message="Please open Database Credentials first!"
-        )
-        return
-
-    file_path = filedialog.askopenfilename(
-        title="Select Pokedex JSON Data",
-        filetypes=[("JSON Files", "*.json")]
-    )
-
-    if file_path:
-        try:
-            with open(file_path, 'r') as f:
-                pokedex = json.load(f)
-                for pokemon_name in pokedex.keys():
-                        pokedex[pokemon_name]['is_caught'] = False
-
-            # messagebox.showinfo(
-            #     title="Success",
-            #     message="Success!"
-            # )
-
-            db_data = ref.get()
-
-            if not db_data:
-                ref.update(pokedex)
-            else:
-                pokedex = db_data
-
-            create_pokedex_boxes()
-            arrange_pokedex_boxes()
-            printPokedex()
-
-            if firebase_listener is not None:
-                firebase_listener.close()
-                firebase_listener = None
-
-            firebase_listener = ref.listen(on_firebase_update)
-
-        except Exception as e:
-            messagebox.showerror(
-                title="Error",
-                message=f"Error: {str(e)}"  # Show the real error!
-            )
-
-
 def toggle_caught(event):
     global pokedex
     
@@ -267,10 +284,11 @@ def toggle_caught(event):
         widget.configure(fg_color="#494949" if new_caught_state else pokedex[pokemon_id]['color'])
         widget.is_caught = new_caught_state
         
-        try:
-            ref.child(pokemon_id).update({"is_caught": new_caught_state})
-        except Exception as e:
-            print(f"Failed to transmit data to Firebase: {e}")
+        if not local_only:
+            try:
+                ref.child(pokemon_id).update({"is_caught": new_caught_state})
+            except Exception as e:
+                print(f"Failed to transmit data to Firebase: {e}")
 
 
 def sync_squares_to_ui():
