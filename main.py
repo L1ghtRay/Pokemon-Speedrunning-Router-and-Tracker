@@ -347,20 +347,23 @@ def sync_squares_to_ui(target_id=None):
 
     try:
         for pokemon_name in squares_to_update:
-            
             if pokemon_name not in squares_cache or pokemon_name not in pokedex:
                 raise KeyError("p_id not in square cache or not in pokedex")
             
             square = squares_cache[pokemon_name]
             is_caught = bool(pokedex[pokemon_name].get('is_caught', False)) # Cast to bool — Firebase can return 0/1 instead of False/True
 
-            if getattr(square, 'is_caught', None) == is_caught:
-                continue            
-
-            print(pokemon_name, is_caught, square.is_caught)
-
-            new_color = "#494949" if is_caught else pokedex[pokemon_name].get('color', '#666666')
-            square.configure(fg_color=new_color)
+            # 1. Determine what the color *should* be
+            expected_color = "#494949" if is_caught else pokedex[pokemon_name].get('color', '#9C9C9C')
+            
+            # 2. OPTIMIZATION: Only update if the caught state or color has actually changed
+            current_color = square.cget("fg_color")
+            if getattr(square, 'is_caught', None) == is_caught and current_color == expected_color:
+                continue # Skip redrawing if nothing changed
+                
+            # 3. Apply changes only when necessary
+            print(f"Syncing UI for {pokemon_name}: caught={is_caught}, color={expected_color}")
+            square.configure(fg_color=expected_color)
             square.is_caught = is_caught
 
     except Exception as e:
@@ -406,18 +409,21 @@ def on_firebase_update(event):
             for pokemon_name, pokemon_data in event.data.items():
                 if pokemon_name in pokedex and isinstance(pokemon_data, dict):
                     pokedex[pokemon_name].update(pokemon_data)
+            app.after(0, lambda: sync_squares_to_ui(None))
 
     elif len(path_parts) == 1:
         # Whole pokemon updated: event.path = '/Pikachu'
         pokemon_name = path_parts[0]
         if pokemon_name in pokedex and isinstance(event.data, dict):
             pokedex[pokemon_name].update(event.data)
+            target_id = pokemon_name
 
     elif len(path_parts) == 2:
         # Single field updated: event.path = '/Pikachu/is_caught'
         pokemon_name, field = path_parts
         if pokemon_name in pokedex:
             pokedex[pokemon_name][field] = event.data
+            target_id = pokemon_name
 
     app.after(0, lambda: sync_squares_to_ui(target_id))
 
