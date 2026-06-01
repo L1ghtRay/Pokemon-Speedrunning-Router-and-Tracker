@@ -1,7 +1,7 @@
 import json, os, sys, re
 import customtkinter as ctk
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, colorchooser
 from PIL import Image, ImageEnhance
 import firebase_admin
 from firebase_admin import credentials
@@ -250,6 +250,7 @@ def create_pokedex_boxes():
         square.pack_propagate(False)
         square.bind("<Button-3>", show_tracker_menu)
         square.bind("<Button-1>", toggle_caught)
+        square.bind("<Button-2>", on_middle_click_square)
         
         square.is_caught = pokemon_info.get('is_caught', False)
         square.pokemon_id = str(pokemon_name)
@@ -272,6 +273,7 @@ def create_pokedex_boxes():
 
             img_label.bind("<Button-1>", toggle_caught)
             img_label.bind("<Button-3>", show_tracker_menu)
+            img_label.bind("<Button-2>", on_middle_click_square)
 
         except Exception as e:
             print(f"[Image Error] pokemon='{pokemon_name}', path='{image_path}', error={e}")
@@ -284,7 +286,8 @@ def create_pokedex_boxes():
             label.pack(expand=True, fill="both")
 
             label.bind("<Button-1>", toggle_caught)
-            label.bind("<Button-3>", show_tracker_menu) 
+            label.bind("<Button-3>", show_tracker_menu)
+            label.bind("<Button-2>", on_middle_click_square)
         
         squares_cache[pokemon_name] = square
 
@@ -395,6 +398,278 @@ def on_firebase_update(event):
     app.after(0, lambda: sync_squares_to_ui(target_id))
 
 
+def open_pokemon_editor(pokemon_name=None):
+    is_edit = pokemon_name is not None
+    if not pokedex and not is_edit:
+        messagebox.showwarning(
+            title="Warning", 
+            message="Load a Pokédex file first!", 
+            parent=app
+        )
+        return
+
+    if is_edit:
+        data = pokedex[pokemon_name]
+    else:
+        data = {
+            "num": 0,
+            "type": [],
+            "color": "#9C9C9C",
+            "locations": {"ruby": [], "sapphire": [], "emerald": []},
+            "is_caught": False
+        }
+    
+    editor = ctk.CTkToplevel(app)
+    editor.title("Edit Pokemon" if is_edit else "Add Pokemon")
+    editor.geometry("420x620")
+    editor.grab_set()
+    editor.resizable(False, True)
+
+    scroll = ctk.CTkScrollableFrame(editor)
+    scroll.pack(fill="both", expand=True, padx=5, pady=5)
+
+    # Name
+    ctk.CTkLabel(scroll, text="Name:", anchor="w").pack(fill="x", pady=(5, 0))
+    name_var = tk.StringVar(value=pokemon_name or "")
+    name_entry = ctk.CTkEntry(scroll, textvariable=name_var)
+    if is_edit: name_entry.configure(state="disabled")
+    name_entry.pack(fill="x", pady=(0, 5))
+
+    # Dex Number
+    ctk.CTkLabel(scroll, text="Dex Number:", anchor="w").pack(fill="x", pady=(5, 0))
+    num_var = tk.StringVar(value=str(data.get("num", 0)))
+    ctk.CTkEntry(scroll, textvariable=num_var).pack(fill="x", pady=(0, 5))
+
+    # Type
+    ctk.CTkLabel(scroll, text="Types (comma-separated):", anchor="w").pack(fill="x", pady=(5, 0))
+    type_var = tk.StringVar(value=", ".join(data.get("type", [])))
+    ctk.CTkEntry(scroll, textvariable=type_var).pack(fill="x", pady=(0, 5))
+
+    # Color
+    ctk.CTkLabel(scroll, text="Color (hex e.g. #9C9C9C):", anchor="w").pack(
+        fill="x", pady=(5, 0)
+    )
+    color_row = ctk.CTkFrame(scroll, fg_color="transparent")
+    color_row.pack(fill="x", pady=(0, 5))
+    color_row.columnconfigure(0, weight=1)
+
+    color_var = tk.StringVar(value=data.get("color", "#9C9C9C"))
+    ctk.CTkEntry(color_row, textvariable=color_var).grid(
+        row=0, column=0, sticky="ew", padx=(0, 8)
+    )
+
+    # Clickable preview frame transformed into an interactive widget element
+    color_preview = ctk.CTkButton(
+        color_row,
+        width=32,
+        height=32,
+        fg_color=data.get("color", "#9C9C9C"),
+        hover_color=data.get("color", "#9C9C9C"),
+        text="",
+        corner_radius=4,
+    )
+    color_preview.grid(row=0, column=1)
+
+
+    def update_preview(*_):
+        c = color_var.get()
+        if re.match(r'^#[0-9A-Fa-f]{6}$', c):
+            color_preview.configure(fg_color=c)
+    color_var.trace_add("write", update_preview)
+
+
+    def open_windows_color_picker():
+        import ctypes
+        from ctypes import wintypes
+
+        pokemon_presets = [
+            "#9C9C9C",  # All Games
+            "#E1432E",  # Multiple game but prefered Ruby
+            "#AF0D0D",  # Only Ruby
+            "#2E81E1",  # Multiple game but prefered Sapphire
+            "#0E0EB7",  # Only Sapphire
+            "#2EE140",  # Multiple game but prefered Emerald
+            "#1D9808",  # Only Emerald
+            "#E5DC29",  # Only Ruby and Emerald
+            "#DB1DCB",  # Only Ruby and Sapphire
+            "#29DCE5",  # Only Sapphire and Emerald
+            "#5A5A5A",  # Not Catchable
+        ]
+
+        COLORREF_ARRAY = wintypes.DWORD * 16
+        custom_colors_memory = COLORREF_ARRAY()
+
+        for idx in range(16):
+            if idx < len(pokemon_presets):
+                hex_str = pokemon_presets[idx].lstrip("#")
+                # Parse out RGB values
+                r, g, b = (
+                    int(hex_str[0:2], 16),
+                    int(hex_str[2:4], 16),
+                    int(hex_str[4:6], 16),
+                )
+                # Pack them in BGR order for Windows memory
+                custom_colors_memory[idx] = (b << 16) | (g << 8) | r
+            else:
+                custom_colors_memory[idx] = 0x00FFFFFF  # Fallback to white padding
+
+        # 3. Define the Windows structural blueprint for CHOOSECOLORW
+        class CHOOSECOLORW(ctypes.Structure):
+            _fields_ = [
+                ("lStructSize", wintypes.DWORD),
+                ("hwndOwner", wintypes.HWND),
+                ("hInstance", wintypes.HWND),
+                ("rgbResult", wintypes.DWORD),
+                ("lpCustColors", ctypes.POINTER(wintypes.DWORD)),
+                ("Flags", wintypes.DWORD),
+                ("lCustData", wintypes.LPARAM),
+                ("lpfnHook", ctypes.c_void_p),
+                ("lpTemplateName", wintypes.LPCWSTR),
+            ]
+
+        # Get parent frame handle ID so the modal locks properly over the app window
+        try:
+            hwnd_parent = editor.winfo_id()
+        except:
+            hwnd_parent = None
+
+        # Parse current active color value to set the picker crosshair default
+        current_hex = color_var.get().lstrip("#")
+        curr_r, curr_g, curr_b = (
+            int(current_hex[0:2], 16),
+            int(current_hex[2:4], 16),
+            int(current_hex[4:6], 16),
+        )
+        initial_bgr = (curr_b << 16) | (curr_g << 8) | curr_r
+
+        # Initialize the native layout configuration object
+        cc = CHOOSECOLORW()
+        cc.lStructSize = ctypes.sizeof(CHOOSECOLORW)
+        cc.hwndOwner = hwnd_parent
+        cc.lpCustColors = ctypes.cast(
+            custom_colors_memory, ctypes.POINTER(wintypes.DWORD)
+        )
+        cc.rgbResult = initial_bgr
+        cc.Flags = (0x00000001 | 0x00000002)  # CC_RGBINIT (Use default color) | CC_FULLOPEN (Auto expand window)
+
+        # 4. Trigger the native Windows DLL window
+        if ctypes.windll.comdlg32.ChooseColorW(ctypes.byref(cc)):
+            # Extract returned BGR configuration integer back out to python hex string
+            b = (cc.rgbResult >> 16) & 0xFF
+            g = (cc.rgbResult >> 8) & 0xFF
+            r = cc.rgbResult & 0xFF
+            selected_color = f"#{r:02X}{g:02X}{b:02X}"
+
+            color_var.set(selected_color)
+
+
+    # Bind the button press action to directly trigger the OS dialog window
+    color_preview.configure(command=open_windows_color_picker)
+
+    # Locations
+    location_boxes = {}
+    locations_data = data.get("locations", {"ruby": [], "sapphire": [], "emerald": []})
+    for game in ["ruby", "sapphire", "emerald"]:
+        ctk.CTkLabel(scroll, text=f"{game.capitalize()} locations (one per line):", anchor="w").pack(fill="x", pady=(5, 0))
+        tb = ctk.CTkTextbox(scroll, height=75)
+        tb.pack(fill="x", pady=(0, 5))
+        tb.insert("1.0", "\n".join(locations_data.get(game, [])))
+        location_boxes[game] = tb
+
+    # Caught
+    caught_var = tk.BooleanVar(value=bool(data.get("is_caught", False)))
+    ctk.CTkCheckBox(scroll, text="Caught", variable=caught_var).pack(anchor="w", pady=(5, 10))
+
+    # Buttons
+    btn_row = ctk.CTkFrame(scroll, fg_color="transparent")
+    btn_row.pack(fill="x", pady=(5, 0))
+
+
+    def save():
+        name = name_var.get().strip()
+        if not name:
+            messagebox.showerror("Error", f"Error: {e}", parent=editor)
+            return
+
+        try:
+            num = int(num_var.get())
+            if any(info.get("num") == num for name, info in pokedex.items() if name != pokemon_name): raise KeyError(f"Dex num {num} is already taken!")
+        except Exception as e:
+            messagebox.showerror("Error", f"Error: {e}", parent=editor)
+            return
+
+        color = color_var.get().strip()
+        if not re.match(r'^#[0-9A-Fa-f]{6}$', color):
+            messagebox.showerror("Error", "Color must be a valid hex code (e.g. #9C9C9C)!", parent=editor)
+            return
+
+        if not is_edit and name in pokedex:
+            messagebox.showerror("Error", f"'{name}' already exists!", parent=editor)
+            return
+
+        new_data = {
+            "num": num,
+            "type": [t.strip() for t in type_var.get().split(",") if t.strip()],
+            "color": color,
+            "locations": {
+                game: [line.strip() for line in tb.get("1.0", "end").splitlines() if line.strip()]
+                for game, tb in location_boxes.items()
+            },
+            "is_caught": caught_var.get()
+        }
+
+        pokedex[name] = new_data
+
+        if not local_only and ref is not None:
+            try:
+                ref.child(name).set(new_data)
+            except Exception as e:
+                print(f"Firebase sync error: {e}")
+
+        create_pokedex_boxes()
+        arrange_pokedex_boxes()
+        editor.destroy()
+    
+
+    def delete():
+        if not messagebox.askyesno("Confirm", f"Delete {pokemon_name} from the Pokédex?", parent=editor):
+            return
+
+        pokedex.pop(pokemon_name, None)
+        if pokemon_name in squares_cache:
+            squares_cache[pokemon_name].destroy()
+            del squares_cache[pokemon_name]
+
+        if not local_only and ref is not None:
+            try:
+                ref.child(pokemon_name).delete()
+            except Exception as e:
+                print(f"Firebase delete error: {e}")
+
+        arrange_pokedex_boxes()
+        editor.destroy()
+
+
+    ctk.CTkButton(btn_row, text="Save", command=save).pack(side="left", expand=True, fill="x", padx=(0, 4))
+    if is_edit:
+        ctk.CTkButton(btn_row, text="Delete", fg_color="#C0392B", hover_color="#922B21", command=delete).pack(side="left", expand=True, fill="x", padx=(0, 4))
+    ctk.CTkButton(btn_row, text="Cancel", fg_color="#555555", hover_color="#333333", command=editor.destroy).pack(side="left", expand=True, fill="x")
+
+
+def on_middle_click_square(event):
+    widget = event.widget
+    while widget is not None:
+        if hasattr(widget, 'pokemon_id'):
+            break
+        widget = getattr(widget, 'master', None)
+    if widget is not None:
+        open_pokemon_editor(widget.pokemon_id)
+
+
+def on_middle_click_empty(event):
+    open_pokemon_editor()
+
+
 
 app = ctk.CTk()
 app.title("Pokemon Route Helper")
@@ -438,7 +713,9 @@ load_pokedex_menu.add_command(label="Cancel")
 
 
 tracker_frame.bind("<Button-3>", show_tracker_menu)
+tracker_frame.bind("<Button-2>", on_middle_click_empty)
 tracker_container.bind("<Button-3>", show_tracker_menu)
+tracker_container.bind("<Button-2>", on_middle_click_empty)
 app.protocol("WM_DELETE_WINDOW", on_closing)
 
 
