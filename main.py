@@ -369,13 +369,37 @@ def sync_squares_to_ui(target_id=None):
 
 def on_firebase_update(event):
     global pokedex
-    if event.data is None:
-        return
 
     path_parts = [p for p in event.path.strip('/').split('/') if p]
 
+    # --- HANDLE COLD DELETIONS FROM FIREBASE CONSOLE ---
+    if event.data is None:
+        if len(path_parts) == 1:
+            # Whole pokemon was deleted directly (e.g., event.path = '/Pikachu')
+            pokemon_name = path_parts[0]
+
+            # 1. Pop from local memory cache dictionary
+            pokedex.pop(pokemon_name, None)
+
+            # 2. Safely wipe the UI element and remove from layout tracking
+            if pokemon_name in squares_cache:
+                squares_cache[pokemon_name].destroy()
+                del squares_cache[pokemon_name]
+
+            # 3. Schedule a structural layout recalculation on the main thread
+            app.after(0, arrange_pokedex_boxes)
+
+        elif len(path_parts) == 2:
+            # A single interior attribute field was deleted (e.g., '/Pikachu/is_caught')
+            pokemon_name, field = path_parts
+            if pokemon_name in pokedex:
+                pokedex[pokemon_name].pop(field, None)
+                app.after(0, lambda: sync_squares_to_ui(pokemon_name))
+        return
+
     target_id = None
 
+    # --- HANDLE NEW INSERTS AND VALUE CHANGES ---
     if len(path_parts) == 0:
         # Initial full snapshot: event.data = {full pokedex}
         if isinstance(event.data, dict):
@@ -588,14 +612,14 @@ def open_pokemon_editor(pokemon_name=None):
     def save():
         name = name_var.get().strip()
         if not name:
-            messagebox.showerror("Error", f"Error: {e}", parent=editor)
+            messagebox.showerror("Name Error", f"Error: {e}", parent=editor)
             return
 
         try:
             num = int(num_var.get())
             if any(info.get("num") == num for name, info in pokedex.items() if name != pokemon_name): raise KeyError(f"Dex num {num} is already taken!")
         except Exception as e:
-            messagebox.showerror("Error", f"Error: {e}", parent=editor)
+            messagebox.showerror("Dex Num Error", f"Error: {e}", parent=editor)
             return
 
         color = color_var.get().strip()
