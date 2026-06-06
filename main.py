@@ -117,16 +117,16 @@ def sync_squares_to_ui(target_id=None):
                         print(f"Syncing Route: {pokemon}")
 
         # Update Right Route Task Checkboxes
-        route_cb_to_update = [target_id] if target_id else list(route_pokemon_checkboxes.keys())
-        for pokemon in route_cb_to_update:
-            if pokemon in route_pokemon_checkboxes and pokemon in pokedex:
-                is_caught = bool(pokedex[pokemon].get('is_caught', False))
+        # route_cb_to_update = [target_id] if target_id else list(route_pokemon_checkboxes.keys())
+        # for pokemon in route_cb_to_update:
+        #     if pokemon in route_pokemon_checkboxes and pokemon in pokedex:
+        #         is_caught = bool(pokedex[pokemon].get('is_caught', False))
                 
-                for cb, var in route_pokemon_checkboxes[pokemon]:
-                    # Only auto-check; never auto-uncheck (unchecking has no effect on pokemon)
-                    if is_caught and not var.get():
-                        var.set(True)
-                        print(f"Syncing Route Checkbox: {pokemon}")
+        #         for cb, var in route_pokemon_checkboxes[pokemon]:
+        #             # Only auto-check; never auto-uncheck (unchecking has no effect on pokemon)
+        #             if is_caught and not var.get():
+        #                 var.set(True)
+        #                 print(f"Syncing Route Checkbox: {pokemon}")
 
     except Exception as e:
         print(f"Error: {e}")
@@ -414,6 +414,8 @@ def toggle_caught(event):
                 ref.child(pokemon_id).update({"is_caught": new_caught_state})
             except Exception as e:
                 print(f"Failed to transmit data to Firebase: {e}")
+
+        sync_squares_to_ui(pokemon_id)
 
 
 def open_pokemon_editor(pokemon_name=None):
@@ -739,6 +741,7 @@ def show_tracker_placeholder():
         font=("Segoe UI", 11),
         anchor="center"
     )
+    placeholder.bind("<Button-3>", show_tracker_menu)
     placeholder.pack(padx=20, pady=20, expand=True)
 
 
@@ -857,7 +860,7 @@ def create_routing_sections():
                 route_pokemon_checkboxes[linked_pokemon].append((cb, var))
 
                 # Use a closure to capture the correct pokemon ID and Var
-                cb.configure(command=lambda p=linked_pokemon, v=var: toggle_caught_from_task(p, v.get()))
+                cb.configure(command=lambda p=linked_pokemon, v=var: toggle_caught_from_task(p, v))
 
         # --- RIGHT SIDE: POKEMON BOXES ---
         if has_pokemon:
@@ -915,19 +918,23 @@ def create_routing_sections():
         route_cache[section_no] = section
 
 
-def toggle_caught_from_task(pokemon_id, new_caught_state):
+def toggle_caught_from_task(pokemon_id, var):
     """Triggered specifically when a Route task checkbox tied to a Pokemon is clicked."""
     global pokedex
+
+    if not var.get():
+        return
+
     if pokemon_id in pokedex:
         # Prevent infinite loops if UI is just syncing
-        if pokedex[pokemon_id].get('is_caught', False) == new_caught_state:
+        if pokedex[pokemon_id].get('is_caught', False):
             return
 
-        pokedex[pokemon_id]['is_caught'] = new_caught_state
+        pokedex[pokemon_id]['is_caught'] = True
 
         if not local_only and ref is not None:
-            try:
-                ref.child(pokemon_id).update({"is_caught": new_caught_state})
+            try:    
+                ref.child(pokemon_id).update({"is_caught": True})
             except Exception as e:
                 print(f"Firebase sync error: {e}")
 
@@ -977,6 +984,7 @@ def show_route_placeholder():
         font=("Segoe UI", 11),
         anchor="center"
     )
+    placeholder.bind("<Button-3>", show_router_menu)
     placeholder.pack(padx=20, pady=20, expand=True)
 
 
