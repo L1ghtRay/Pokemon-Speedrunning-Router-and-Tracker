@@ -142,10 +142,6 @@ def on_middle_click_square(event):
         open_pokemon_editor(widget.pokemon_id)
 
 
-def on_middle_click_empty(event):
-    open_pokemon_editor()
-
-
 def get_asset_path(relative_path):
     # Get absolute path to resource, works for dev and for PyInstaller
     try:
@@ -745,6 +741,10 @@ def show_tracker_placeholder():
     placeholder.pack(padx=20, pady=20, expand=True)
 
 
+def on_middle_click_tracker(event):
+    open_pokemon_editor()
+
+
 def printPokedex():
     if not pokedex:
         print(pokedex)
@@ -779,7 +779,37 @@ def open_routing_file():
 
 
 def save_routing_data():
-    return
+    global route
+
+    if not route:
+        messagebox.showwarning(
+            title="Warning", message="Route is empty! Nothing to save."
+        )
+        return
+
+    file_path = filedialog.asksaveasfilename(
+        title="Save Route Data",
+        initialfile=route_file_name,
+        defaultextension=".json",
+        filetypes=[("JSON Files", "*.json")],
+    )
+
+    if file_path:
+        try:
+            with open(file_path, "w") as f:
+                json.dump(route, f, indent=4)
+
+            messagebox.showinfo(
+                title="Success",
+                message="Route data saved successfully!"
+            )
+
+        except Exception as e:
+            print(f"Error saving route data: {e}")
+            messagebox.showerror(
+                title="Error",
+                message="Could not save the route file!"
+            )
 
 
 def create_routing_sections():
@@ -804,24 +834,28 @@ def create_routing_sections():
         )
         section.pack(fill="x", padx=10, pady=(0, 15))
         section.bind("<Button-3>", show_router_menu)
-        # section.bind("<Button-2>", on_middle_click_square)
+        section.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
 
         loc_name = section_info.get('location', f"Section {section_no}")
         header = ctk.CTkLabel(
             section,
-            text=loc_name,
+            text=f"{section_no}. {loc_name}",
             font=("Segoe UI", 16, "bold"),
             text_color="#ffffff"
         )
         header.pack(anchor="w", padx=15, pady=(8, 0))
+        header.bind("<Button-3>", show_router_menu)
+        header.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
 
         content_frame = ctk.CTkFrame(section, fg_color="transparent")
+        content_frame.bind("<Button-3>", show_router_menu)
+        content_frame.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
         content_frame.pack(fill="x", expand=True, padx=15, pady=(5, 15))
 
         tasks = section_info.get("tasks", {})
         explicit_pokemon = section_info.get("pokemon", [])
 
-        task_pokemon = [val[1] for val in tasks.values() if isinstance(val, list)]
+        task_pokemon = [val["pokemon"] for val in tasks.values() if val.get("pokemon")]
         
         all_pokemon_in_section = list(dict.fromkeys(explicit_pokemon + task_pokemon))
         has_pokemon = len(all_pokemon_in_section) > 0
@@ -830,18 +864,19 @@ def create_routing_sections():
             content_frame,
             fg_color="transparent"
         )
+        task_frame.bind("<Button-3>", show_router_menu)
+        task_frame.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
         task_frame.pack(side="left", fill="both", expand=True)
 
         for task_no, task_info in tasks.items():
-            is_linked = isinstance(task_info, list)
-            task_text = task_info[0] if is_linked else task_info
-            linked_pokemon = task_info[1] if is_linked else None
+            task_text = task_info.get("text", "---")
+            linked_pokemon = task_info.get("pokemon")
 
-            var = tk.BooleanVar(value=False)
+            var = tk.BooleanVar(value=task_info.get("checked"))
             
             # If the task is linked to a Pokemon, fetch its initial catch state
-            if linked_pokemon and linked_pokemon in pokedex:
-                var.set(pokedex[linked_pokemon].get('is_caught', False))
+            # if linked_pokemon and linked_pokemon in pokedex:
+            #     var.set(pokedex[linked_pokemon].get('is_caught', False))
 
             cb = ctk.CTkCheckBox(
                 task_frame, 
@@ -851,6 +886,8 @@ def create_routing_sections():
                 checkbox_width=20,
                 checkbox_height=20
             )
+            cb.bind("<Button-3>", show_router_menu)
+            cb.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
             cb.pack(anchor="w", pady=4)
 
             # If linked, bind the click command to update the global database
@@ -860,15 +897,19 @@ def create_routing_sections():
                 route_pokemon_checkboxes[linked_pokemon].append((cb, var))
 
                 # Use a closure to capture the correct pokemon ID and Var
-                cb.configure(command=lambda p=linked_pokemon, v=var: toggle_caught_from_task(p, v))
+                cb.configure(command=lambda s=section_no, t=task_no, v=var, p=linked_pokemon: on_task_checkbox_clicked(s, t, v, p))
 
         # --- RIGHT SIDE: POKEMON BOXES ---
         if has_pokemon:
             # Add a subtle vertical line to split the sections
             separator = ctk.CTkFrame(content_frame, width=2, height=0, fg_color="#555555")
+            separator.bind("<Button-3>", show_router_menu)
+            separator.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
             separator.pack(side="left", fill="y", padx=15)
 
             pokemon_frame = ctk.CTkFrame(content_frame, fg_color="transparent")
+            pokemon_frame.bind("<Button-3>", show_router_menu)
+            pokemon_frame.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
             pokemon_frame.pack(side="right", fill="y")
             
             # Create a localized 3-column grid for Pokemon in this specific section
@@ -893,8 +934,8 @@ def create_routing_sections():
                 square.pokemon_id = pk_name
                 square.configure(fg_color=pokemon_info.get('color', '#9C9C9C') if not square.is_caught else "#494949")
 
-                # Apply Bindings
                 square.bind("<Button-1>", toggle_caught)
+                square.bind("<Button-3>", show_router_menu)
                 square.bind("<Button-2>", on_middle_click_square)
                 
                 # Fetch and render Image
@@ -903,11 +944,13 @@ def create_routing_sections():
                     img_label = ctk.CTkLabel(square, image=ctk_image, text="")
                     img_label.pack(expand=True, fill="both")
                     img_label.bind("<Button-1>", toggle_caught)
+                    img_label.bind("<Button-3>", show_router_menu)
                     img_label.bind("<Button-2>", on_middle_click_square)
                 except Exception:
                     lbl = ctk.CTkLabel(square, text=str(pokemon_info.get('num', '?')), text_color="#FFF", font=("Segoe UI", 10, "bold"))
                     lbl.pack(expand=True, fill="both")
                     lbl.bind("<Button-1>", toggle_caught)
+                    lbl.bind("<Button-3>", show_router_menu)
                     lbl.bind("<Button-2>", on_middle_click_square)
                 
                 # Register widget to cache for dynamic updating
@@ -916,6 +959,177 @@ def create_routing_sections():
                 route_squares_cache[pk_name].append(square)
 
         route_cache[section_no] = section
+
+
+def open_section_editor(section_no=None):
+    global route
+
+    if not route and section_no is None:
+        # Allow adding first section to an empty route only if a route file name exists
+        if not route_file_name:
+            messagebox.showwarning(
+                title="Warning",
+                message="Load a Route file first!",
+                parent=app
+            )
+            return
+
+    is_edit = section_no is not None
+
+    if is_edit:
+        data = route[section_no]
+    else:
+        data = {
+            "location": "",
+            "pokemon": [],
+            "tasks": {}
+        }
+
+    editor = ctk.CTkToplevel(app)
+    editor.title(f"Edit Section {section_no}" if is_edit else "Add Route Section")
+    editor.geometry("500x680")
+    editor.grab_set()
+    editor.resizable(False, True)
+
+    scroll = ctk.CTkScrollableFrame(editor)
+    scroll.pack(fill="both", expand=True, padx=5, pady=5)
+
+    # Location Name
+    ctk.CTkLabel(scroll, text="Location Name:", anchor="w").pack(fill="x", pady=(5, 0))
+    location_var = tk.StringVar(value=data.get("location", ""))
+    ctk.CTkEntry(scroll, textvariable=location_var).pack(fill="x", pady=(0, 5))
+
+    # --- Tasks ---
+    ctk.CTkLabel(scroll, text="Tasks:", anchor="w", font=("Segoe UI", 13, "bold")).pack(fill="x", pady=(10, 2))
+    ctk.CTkLabel(
+        scroll,
+        text="One task per line. To link a task to a Pokémon, use:  Task text | PokemonName",
+        anchor="w",
+        text_color="#AAAAAA",
+        font=("Segoe UI", 11)
+    ).pack(fill="x", pady=(0, 4))
+
+    # Build initial task text from existing tasks data
+    # Linked tasks are stored as [text, pokemon], plain tasks as a string
+    task_lines = []
+    for task_val in data.get("tasks", {}).values():
+        if task_val.get("pokemon"):
+            task_lines.append(f"{task_val.get("text", "---")} | {task_val.get("pokemon")}")
+        else:
+            task_lines.append(str(task_val.get("text", "---")))
+
+    tasks_box = ctk.CTkTextbox(scroll, height=150)
+    tasks_box.pack(fill="x", pady=(0, 5))
+    tasks_box.insert("1.0", "\n".join(task_lines))
+
+    # --- Explicit Pokemon ---
+    ctk.CTkLabel(scroll, text="Pokemon (one per line, exact name):", anchor="w", font=("Segoe UI", 13, "bold")).pack(fill="x", pady=(10, 2))
+    ctk.CTkLabel(
+        scroll,
+        text="These Pokemon will appear as squares in this section regardless of tasks.",
+        anchor="w",
+        text_color="#AAAAAA",
+        font=("Segoe UI", 11)
+    ).pack(fill="x", pady=(0, 4))
+
+    pokemon_box = ctk.CTkTextbox(scroll, height=100)
+    pokemon_box.pack(fill="x", pady=(0, 5))
+    pokemon_box.insert("1.0", "\n".join(data.get("pokemon", [])))
+
+    # Buttons
+    btn_row = ctk.CTkFrame(scroll, fg_color="transparent")
+    btn_row.pack(fill="x", pady=(10, 0))
+
+
+    def save():
+        location = location_var.get().strip()
+        if not location:
+            messagebox.showerror("Error", "Location name cannot be empty!", parent=editor)
+            return
+
+        # Parse tasks from the textbox — each non-empty line becomes a numbered task
+        raw_task_lines = [line.strip() for line in tasks_box.get("1.0", "end").splitlines() if line.strip()]
+        parsed_tasks = {}
+        for idx, line in enumerate(raw_task_lines, start=1):
+            if "|" in line:
+                # Split on first pipe only so task text can contain other characters
+                parts = line.split("|", 1)
+                task_text = parts[0].strip()
+                linked_pokemon = parts[1].strip()
+                parsed_tasks[str(idx)] = {
+                    "text": task_text,
+                    "checked": False,
+                    "pokemon": linked_pokemon
+                }
+            else:
+                parsed_tasks[str(idx)] = {
+                    "text": task_text,
+                    "checked": False
+                }
+
+        # Parse explicit pokemon list
+        parsed_pokemon = [pk.strip() for pk in pokemon_box.get("1.0", "end").splitlines() if pk.strip()]
+
+        new_data = {
+            "location": location,
+            "tasks": parsed_tasks,
+            "pokemon": parsed_pokemon
+        }
+
+        if is_edit:
+            # Keep the same section key
+            route[section_no] = new_data
+        else:
+            # Generate the next available section key
+            if route:
+                next_key = str(max(int(k) for k in route.keys()) + 1)
+            else:
+                next_key = "1"
+            route[next_key] = new_data
+
+        create_routing_sections()
+        editor.destroy()
+
+
+    def delete():
+        if not messagebox.askyesno("Confirm", f"Delete section '{data.get('location', section_no)}' from the route?", parent=editor):
+            return
+
+        route.pop(section_no, None)
+
+        # Re-number remaining sections sequentially to keep keys clean
+        sorted_items = sorted(route.items(), key=lambda x: int(x[0]))
+        renumbered = {str(i + 1): v for i, (_, v) in enumerate(sorted_items)}
+        route.clear()
+        route.update(renumbered)
+
+        create_routing_sections()
+        editor.destroy()
+
+
+    ctk.CTkButton(btn_row, text="Save", command=save).pack(side="left", expand=True, fill="x", padx=(0, 4))
+    if is_edit:
+        ctk.CTkButton(btn_row, text="Delete", fg_color="#C0392B", hover_color="#922B21", command=delete).pack(side="left", expand=True, fill="x", padx=(0, 4))
+    ctk.CTkButton(btn_row, text="Cancel", fg_color="#555555", hover_color="#333333", command=editor.destroy).pack(side="left", expand=True, fill="x")
+
+
+def on_middle_click_section(event, section_no):
+    """Open the section editor when middle-clicking a section header or its area."""
+    open_section_editor(section_no)
+
+
+def on_task_checkbox_clicked(section_no, task_no, var, linked_pokemon=None):
+    """Updates the dictionary when a user clicks a route task checkbox."""
+    global route
+    
+    # 1. Update the dictionary so it saves correctly later
+    if section_no in route and "tasks" in route[section_no] and task_no in route[section_no]["tasks"]:
+        route[section_no]["tasks"][task_no]["checked"] = var.get()
+        print(f"Updated Section {section_no}, Task {task_no} to {var.get()}")
+
+    # 2. If the task is linked to a Pokemon, trigger the tracker update
+    if linked_pokemon:
+        toggle_caught_from_task(linked_pokemon, var)
 
 
 def toggle_caught_from_task(pokemon_id, var):
@@ -973,6 +1187,10 @@ def clear_routing_data():
 
 def show_router_menu(event):
     load_router_menu.post(event.x_root, event.y_root)
+
+
+def on_middle_click_router(event):
+    open_section_editor()
 
 
 def show_route_placeholder():
@@ -1060,14 +1278,14 @@ load_router_menu.add_command(label="Clear Routing Data", command=clear_routing_d
 # --- Bindings ---
 
 tracker_frame.bind("<Button-3>", show_tracker_menu)
-tracker_frame.bind("<Button-2>", on_middle_click_empty)
+tracker_frame.bind("<Button-2>", on_middle_click_tracker)
 tracker_container.bind("<Button-3>", show_tracker_menu)
-tracker_container.bind("<Button-2>", on_middle_click_empty)
+tracker_container.bind("<Button-2>", on_middle_click_tracker)
 
 router_frame.bind("<Button-3>", show_router_menu)
-router_frame.bind("<Button-2>", on_middle_click_empty)
+router_frame.bind("<Button-2>", on_middle_click_router)
 router_container.bind("<Button-3>", show_router_menu)
-router_container.bind("<Button-2>", on_middle_click_empty)
+router_container.bind("<Button-2>", on_middle_click_router)
 
 app.protocol("WM_DELETE_WINDOW", on_closing)
 
