@@ -116,20 +116,17 @@ def sync_squares_to_ui(target_id=None):
                         sq.is_caught = is_caught
                         print(f"Syncing Route: {pokemon}")
 
-        # Update Right Route Task Checkboxes
-        # route_cb_to_update = [target_id] if target_id else list(route_pokemon_checkboxes.keys())
-        # for pokemon in route_cb_to_update:
-        #     if pokemon in route_pokemon_checkboxes and pokemon in pokedex:
-        #         is_caught = bool(pokedex[pokemon].get('is_caught', False))
-                
-        #         for cb, var in route_pokemon_checkboxes[pokemon]:
-        #             # Only auto-check; never auto-uncheck (unchecking has no effect on pokemon)
-        #             if is_caught and not var.get():
-        #                 var.set(True)
-        #                 print(f"Syncing Route Checkbox: {pokemon}")
+        update_caught_counter()
 
     except Exception as e:
         print(f"Error: {e}")
+
+
+def update_caught_counter():
+    total = len(pokedex)
+    caught = sum(1 for p in pokedex.values() if p.get('is_caught', False))
+    remaining = total - caught
+    counter_label.configure(text=f"{caught}/{total}")
 
 
 def on_middle_click_square(event):
@@ -298,6 +295,14 @@ def create_pokedex_boxes():
     global squares_cache
 
     if not pokedex: return
+
+    if not counter_bar.winfo_manager(): # Only pack if it isn't already visible
+        prior_widgets = [w for w in router_frame.winfo_children() if w != counter_bar and w.winfo_manager() == 'pack']
+        if prior_widgets:
+            # Force counter_bar to the absolute top of the packing stack
+            counter_bar.pack(side="top", fill="x", before=prior_widgets[0])
+        else:
+            counter_bar.pack(side="top", fill="x")
 
     clear_squares_data()
 
@@ -709,6 +714,7 @@ def clear_tracker_data():
     clear_squares_data()
 
     tracker_container.pack_forget()
+    counter_bar.pack_forget()
 
     show_tracker_placeholder()
 
@@ -748,7 +754,7 @@ def on_middle_click_tracker(event):
 def printPokedex():
     if not pokedex:
         print(pokedex)
-    for pokemon in pokedex.items():
+    for pokemon in pokedex.keys():
         print(pokemon)
 
 
@@ -832,7 +838,7 @@ def create_routing_sections():
             border_color="#727272",
             fg_color="#444444"
         )
-        section.pack(fill="x", padx=10, pady=(0, 15))
+        section.pack(fill="x", padx=10, pady=(15, 0))
         section.bind("<Button-3>", show_router_menu)
         section.bind("<Button-2>", lambda e, sno=section_no: on_middle_click_section(e, sno))
 
@@ -1249,7 +1255,10 @@ tracker_container._parent_frame.bind("<Configure>", arrange_pokedex_boxes)
 router_frame = ctk.CTkFrame(paned_window, fg_color="#383838", corner_radius=0)
 paned_window.add(router_frame, stretch="always")
 router_container = ctk.CTkScrollableFrame(router_frame, fg_color="transparent", corner_radius=0)
-# router_container._parent_frame.bind("<Configure>", arrange_route_sections)
+
+counter_bar = ctk.CTkFrame(router_frame, fg_color="#5b5b5b", corner_radius=0)
+counter_label = ctk.CTkLabel(counter_bar, text="", text_color="#CFCF00", font=("Segoe UI", 14, "bold"), anchor="center")
+counter_label.pack(anchor="center", padx=3, pady=2)
 
 show_tracker_placeholder()
 show_route_placeholder()
