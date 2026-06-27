@@ -49,7 +49,8 @@ Program that allows one to create routes and track caught pokemon for speedrunni
 4. Right-click on the left side section and click on "Open Database Credentials File"
 5. Select the database key .json file
 6. Now you can open then pokedex file similar to the offline mode setup
-> Note: The Database can host multiple pokedexes at once. The way to determine the pokedex you're using is based on the name of the pokedex file you have loaded
+   
+> Note: The database can host multiple pokedexes at once. The way to determine the pokedex you're using is based on the name of the pokedex file you have loaded
 
 ## Setup (Route Helper)
 
