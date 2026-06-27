@@ -235,10 +235,14 @@ def open_database_creds():
 
     if file_path:
         try:
-            database_url = ctk.CTkInputDialog(
-                text="Enter Database URL:",
-                title="Database URL Required"
-            ).get_input()
+            # database_url = ctk.CTkInputDialog(
+            #     text="Enter Database URL:",
+            #     title="Database URL Required"
+            # ).get_input()
+            
+            with open(file_path) as file:
+                data = json.load(file)
+                database_url = data['databaseURL']
 
             if not re.match(r"https:\/\/[\w.-]+\.(?:firebasedatabase\.app|firebaseio\.com)\/?", database_url):
                 raise ValueError("Invalid Database URL")
@@ -1240,7 +1244,7 @@ def show_route_placeholder():
 # --- Main App Code ---
 
 app = ctk.CTk()
-app.title("Pokemon Route Helper")
+app.title("PokeTrack&Route")
 app.geometry("800x300")
 
 paned_window = tk.PanedWindow(app, orient=tk.HORIZONTAL, sashwidth=5, sashpad=0, bg="#2b2b2b")
