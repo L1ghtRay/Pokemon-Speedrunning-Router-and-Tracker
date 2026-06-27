@@ -32,12 +32,12 @@ Program that allows one to create routes and track caught pokemon for speedrunni
 ## Setup (For Offline Mode Pokedex Tracker)
 
 1. Download the latest release of the program and one of the pokedexes in ```/pokedexes``` in the github
-2. Launch the program
-3. Right Click on the left side section and click on "Open Pokedex File"
-4. Select the downloaded pokedex file
-5. To edit/delete a pokemon from the pokedex: Middle-click on its square
-6. To add a new pokemon to the pokedex: Middle-click on the counter or between the scrollbar and the squares
-7. To create a pokedex file from scratch: Create a new empty .json file and open that file in the program
+2. To create a pokedex file from scratch: Create a new empty .json file
+3. Launch the program
+4. Right Click on the left side section and click on "Open Pokedex File"
+5. Select the pokedex file
+6. To edit/delete a pokemon from the pokedex: Middle-click on its square
+7. To add a new pokemon to the pokedex: Middle-click on the counter or between the scrollbar and the squares
 
 **IMPORTANT**: Offline Mode does not have autosave (since no live database), so if you made any changes, remember to save the pokedex file manually (Right-Click -> Save Pokedex File)
 
