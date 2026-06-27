@@ -125,7 +125,7 @@ def sync_squares_to_ui(target_id=None):
 def update_caught_counter():
     total = len(pokedex)
     caught = sum(1 for p in pokedex.values() if p.get('is_caught', False))
-    remaining = total - caught
+    # remaining = total - caught
     counter_label.configure(text=f"{caught}/{total}")
 
 
@@ -654,6 +654,7 @@ def open_pokemon_editor(pokemon_name=None):
                 print(f"Firebase sync error: {e}")
 
         create_pokedex_boxes()
+        update_caught_counter()
         arrange_pokedex_boxes()
         editor.destroy()
     
@@ -674,6 +675,7 @@ def open_pokemon_editor(pokemon_name=None):
                 print(f"Firebase delete error: {e}")
 
         arrange_pokedex_boxes()
+        update_caught_counter()
         editor.destroy()
 
 
@@ -1260,7 +1262,7 @@ app.grid_columnconfigure(0, weight=1)
 
 tracker_frame = ctk.CTkFrame(paned_window, fg_color="#666666", corner_radius=0)
 paned_window.add(tracker_frame, stretch="never")
-tracker_container = ctk.CTkScrollableFrame(tracker_frame, fg_color="#ffff00", corner_radius=0)
+tracker_container = ctk.CTkScrollableFrame(tracker_frame, fg_color="transparent", corner_radius=0)
 tracker_container._parent_frame.bind("<Configure>", arrange_pokedex_boxes)
 
 router_frame = ctk.CTkFrame(paned_window, fg_color="#383838", corner_radius=0)
