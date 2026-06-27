@@ -50,6 +50,7 @@ def on_firebase_update(event):
 
             # 3. Schedule a structural layout recalculation on the main thread
             app.after(0, arrange_pokedex_boxes)
+            app.after(0, update_caught_counter)
 
         elif len(path_parts) == 2:
             # A single interior attribute field was deleted (e.g., '/Pikachu/is_caught')
@@ -60,22 +61,31 @@ def on_firebase_update(event):
         return
 
     target_id = None
+    needs_rebuild = False
 
     # --- HANDLE NEW INSERTS AND VALUE CHANGES ---
     if len(path_parts) == 0:
         # Initial full snapshot: event.data = {full pokedex}
         if isinstance(event.data, dict):
             for pokemon_name, pokemon_data in event.data.items():
-                if pokemon_name in pokedex and isinstance(pokemon_data, dict):
+                if pokemon_name not in pokedex:
+                    pokedex[pokemon_name] = pokemon_data
+                    needs_rebuild = True
+                elif isinstance(pokemon_data, dict):
                     pokedex[pokemon_name].update(pokemon_data)
-            app.after(0, lambda: sync_squares_to_ui(None))
 
     elif len(path_parts) == 1:
         # Whole pokemon updated: event.path = '/Pikachu'
         pokemon_name = path_parts[0]
-        if pokemon_name in pokedex and isinstance(event.data, dict):
-            pokedex[pokemon_name].update(event.data)
-            target_id = pokemon_name
+        if isinstance(event.data, dict):
+            if pokemon_name not in pokedex:
+                # NEW POKEMON ADDED!
+                pokedex[pokemon_name] = event.data
+                needs_rebuild = True 
+            else:
+                # Existing Pokemon modified
+                pokedex[pokemon_name].update(event.data)
+                target_id = pokemon_name
 
     elif len(path_parts) == 2:
         # Single field updated: event.path = '/Pikachu/is_caught'
@@ -84,7 +94,14 @@ def on_firebase_update(event):
             pokedex[pokemon_name][field] = event.data
             target_id = pokemon_name
 
-    app.after(0, lambda: sync_squares_to_ui(target_id))
+    if needs_rebuild:
+        # If a brand new Pokémon was added, we must rebuild the UI boxes
+        # (create_pokedex_boxes automatically triggers the counter update at the end)
+        app.after(0, create_pokedex_boxes)
+        app.after(0, arrange_pokedex_boxes)
+    else:
+        # Otherwise, just cleanly sync the color/caught state of existing boxes
+        app.after(0, lambda: sync_squares_to_ui(target_id))
 
 
 def sync_squares_to_ui(target_id=None):
@@ -125,7 +142,7 @@ def sync_squares_to_ui(target_id=None):
 def update_caught_counter():
     total = len(pokedex)
     caught = sum(1 for p in pokedex.values() if p.get('is_caught', False))
-    remaining = total - caught
+    # remaining = total - caught
     counter_label.configure(text=f"{caught}/{total}")
 
 
@@ -654,6 +671,7 @@ def open_pokemon_editor(pokemon_name=None):
                 print(f"Firebase sync error: {e}")
 
         create_pokedex_boxes()
+        update_caught_counter()
         arrange_pokedex_boxes()
         editor.destroy()
     
@@ -674,6 +692,7 @@ def open_pokemon_editor(pokemon_name=None):
                 print(f"Firebase delete error: {e}")
 
         arrange_pokedex_boxes()
+        update_caught_counter()
         editor.destroy()
 
 
@@ -1260,7 +1279,7 @@ app.grid_columnconfigure(0, weight=1)
 
 tracker_frame = ctk.CTkFrame(paned_window, fg_color="#666666", corner_radius=0)
 paned_window.add(tracker_frame, stretch="never")
-tracker_container = ctk.CTkScrollableFrame(tracker_frame, fg_color="#ffff00", corner_radius=0)
+tracker_container = ctk.CTkScrollableFrame(tracker_frame, fg_color="transparent", corner_radius=0)
 tracker_container._parent_frame.bind("<Configure>", arrange_pokedex_boxes)
 
 router_frame = ctk.CTkFrame(paned_window, fg_color="#383838", corner_radius=0)

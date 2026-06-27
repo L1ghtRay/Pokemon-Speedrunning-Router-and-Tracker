@@ -1,4 +1,5 @@
-# Pokemon-Speedrunning-Router-and-Tracker
+# Pokemon-Pokedex-Tracker-and-Route-Helper
+
 A Program to create routes and track caught pokemon for speedrunning. It also allows multiple people to track pokemon simultaneously using a Firebase Realtime Database.
 
 ## Setup (Database for Multi-user Connection)
